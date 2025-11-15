@@ -8,6 +8,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { queryClient } from "./lib/queryClient";
 import { Header, Footer } from "./components/layout";
 import { Hero } from "./components/Hero";
+import { About } from "./components/About";
+import { Skills } from "./components/Skills";
 
 function App() {
   return (
@@ -22,32 +24,11 @@ function App() {
             {/* Hero Section */}
             <Hero />
 
-            {/* About Section - Coming Soon */}
-            <section
-              id="about"
-              className="py-20 bg-gray-50 dark:bg-gray-800/50"
-            >
-              <div className="container-custom text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
-                  About Me
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Section coming soon...
-                </p>
-              </div>
-            </section>
+            {/* About Section */}
+            <About />
 
-            {/* Skills Section - Coming Soon */}
-            <section id="skills" className="py-20">
-              <div className="container-custom text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
-                  Skills
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Section coming soon...
-                </p>
-              </div>
-            </section>
+            {/* Skills Section */}
+            <Skills />
 
             {/* Projects Section - Coming Soon */}
             <section

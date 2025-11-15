@@ -233,7 +233,10 @@ export const Hero = () => {
           </Motion.div>
 
           {/* Scroll indicator */}
-          <Motion.div variants={itemVariants} className="mt-16">
+          <Motion.div
+            variants={itemVariants}
+            className="mt-16 flex justify-center"
+          >
             <Motion.button
               onClick={() => scrollToSection("#about")}
               className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
