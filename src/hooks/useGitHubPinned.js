@@ -65,21 +65,23 @@ const fetchGitHubPinned = async () => {
 
     const pinnedRepos = response.user?.pinnedItems?.nodes || [];
 
-    // Transform data to match REST API structure for consistency
+    // Transform data for use in ProjectCard component
     const transformedRepos = pinnedRepos.map(repo => ({
       id: repo.id,
       name: repo.name,
       description: repo.description,
-      html_url: repo.url,
-      homepage: repo.homepageUrl,
-      stargazers_count: repo.stargazerCount,
-      forks_count: repo.forkCount,
-      created_at: repo.createdAt,
-      updated_at: repo.updatedAt,
-      language: repo.primaryLanguage?.name,
-      language_color: repo.primaryLanguage?.color,
+      url: repo.url,
+      homepageUrl: repo.homepageUrl,
+      stargazerCount: repo.stargazerCount,
+      forkCount: repo.forkCount,
+      createdAt: repo.createdAt,
+      updatedAt: repo.updatedAt,
+      primaryLanguage: repo.primaryLanguage ? {
+        name: repo.primaryLanguage.name,
+        color: repo.primaryLanguage.color,
+      } : null,
       languages: repo.languages?.nodes || [],
-      open_graph_image_url: repo.openGraphImageUrl,
+      openGraphImageUrl: repo.openGraphImageUrl,
       topics: repo.repositoryTopics?.nodes?.map(t => t.topic.name) || [],
     }));
 

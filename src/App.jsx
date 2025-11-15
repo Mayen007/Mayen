@@ -10,6 +10,7 @@ import { Header, Footer } from "./components/layout";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
+import { Projects } from "./components/Projects";
 
 function App() {
   return (
@@ -30,20 +31,8 @@ function App() {
             {/* Skills Section */}
             <Skills />
 
-            {/* Projects Section - Coming Soon */}
-            <section
-              id="projects"
-              className="py-20 bg-gray-50 dark:bg-gray-800/50"
-            >
-              <div className="container-custom text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
-                  Projects
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Section coming soon...
-                </p>
-              </div>
-            </section>
+            {/* Projects Section */}
+            <Projects />
 
             {/* Contact Section - Coming Soon */}
             <section id="contact" className="py-20">

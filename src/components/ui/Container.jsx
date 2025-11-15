@@ -15,7 +15,7 @@ export const Container = ({ children, className = "" }) => {
  */
 export const Section = ({ children, className = "", id }) => {
   return (
-    <section id={id} className={`py-20 ${className}`}>
+    <section id={id} className={`py-12 sm:py-16 lg:py-20 ${className}`}>
       <Container>{children}</Container>
     </section>
   );
