@@ -12,6 +12,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      'os': 'rollup-plugin-node-polyfills/polyfills/os',
     },
+  },
+  define: {
+    'process.env': {},
+    global: 'globalThis',
   },
 })

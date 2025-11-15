@@ -7,6 +7,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "./context/ThemeContext";
 import { queryClient } from "./lib/queryClient";
 import { Header, Footer } from "./components/layout";
+import { Hero } from "./components/Hero";
 
 function App() {
   return (
@@ -17,24 +18,63 @@ function App() {
           <Header />
 
           {/* Main Content */}
-          <main className="flex-grow" id="home">
-            <div className="container-custom py-32">
-              <h1 className="text-4xl md:text-6xl font-bold text-center animate-fade-in">
-                <span className="text-gradient">Mayen Akech</span>
-              </h1>
-              <p className="text-xl text-center mt-4 text-gray-600 dark:text-gray-400 animate-slide-up">
-                Full-Stack Developer | Building Solutions, One Bug Fix at a Time
-              </p>
-              <div className="text-center mt-8 animate-fade-in">
-                <p className="text-gray-500 dark:text-gray-500">
-                  Portfolio components loading... 🚀
-                </p>
-                <p className="text-sm text-gray-400 dark:text-gray-600 mt-4">
-                  Theme toggle in top right • Navigation ready • GitHub API
-                  configured
+          <main className="flex-grow">
+            {/* Hero Section */}
+            <Hero />
+
+            {/* About Section - Coming Soon */}
+            <section
+              id="about"
+              className="py-20 bg-gray-50 dark:bg-gray-800/50"
+            >
+              <div className="container-custom text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+                  About Me
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Section coming soon...
                 </p>
               </div>
-            </div>
+            </section>
+
+            {/* Skills Section - Coming Soon */}
+            <section id="skills" className="py-20">
+              <div className="container-custom text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+                  Skills
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Section coming soon...
+                </p>
+              </div>
+            </section>
+
+            {/* Projects Section - Coming Soon */}
+            <section
+              id="projects"
+              className="py-20 bg-gray-50 dark:bg-gray-800/50"
+            >
+              <div className="container-custom text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+                  Projects
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Section coming soon...
+                </p>
+              </div>
+            </section>
+
+            {/* Contact Section - Coming Soon */}
+            <section id="contact" className="py-20">
+              <div className="container-custom text-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+                  Contact
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Section coming soon...
+                </p>
+              </div>
+            </section>
           </main>
 
           {/* Footer */}

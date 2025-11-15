@@ -13,7 +13,6 @@ const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 export const octokit = new Octokit({
   auth: GITHUB_TOKEN,
   userAgent: 'Mayen-Portfolio/1.0.0',
-  timeZone: 'Africa/Nairobi',
 });
 
 /**
