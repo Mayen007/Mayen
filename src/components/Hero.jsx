@@ -69,9 +69,9 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
       {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/20 rounded-full blur-3xl"
           animate={{
@@ -100,12 +100,12 @@ export const Hero = () => {
 
       {/* Content */}
       <Motion.div
-        className="container-custom relative z-10 py-20"
+        className="container-custom relative z-10 py-20 w-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center px-4">
           {/* Avatar */}
           {user?.avatar_url && (
             <Motion.div variants={itemVariants} className="mb-8">
@@ -127,9 +127,11 @@ export const Hero = () => {
           {/* Name */}
           <Motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
           >
-            <span className="text-gradient">{user?.name || "Mayen Akech"}</span>
+            <span className="text-gradient break-words">
+              {user?.name || "Mayen Akech"}
+            </span>
           </Motion.h1>
 
           {/* Tagline */}
@@ -143,7 +145,7 @@ export const Hero = () => {
           {/* Bio */}
           <Motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto px-4"
           >
             {user?.bio || "Building Solutions, One Bug Fix at a Time 🚀"}
           </Motion.p>
@@ -194,7 +196,7 @@ export const Hero = () => {
           {/* CTA Buttons */}
           <Motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 px-4"
           >
             <Button onClick={() => scrollToSection("#projects")} size="lg">
               View Projects

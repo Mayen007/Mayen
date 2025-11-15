@@ -20,6 +20,7 @@ const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Timeline", href: "#timeline" },
   { name: "Activity", href: "#activity" },
   { name: "Contact", href: "#contact" },
 ];
@@ -76,8 +77,8 @@ export const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <nav className="container-custom py-4">
-        <div className="flex items-center justify-between">
+      <nav className="container-custom py-4 max-w-full">
+        <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <Motion.a
             href="#home"
@@ -100,7 +101,7 @@ export const Header = () => {
           </Motion.a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-1 flex-shrink-0">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (

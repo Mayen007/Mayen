@@ -173,26 +173,6 @@ export const Skills = () => {
             </Motion.div>
           ))}
         </div>
-
-        {/* Additional Info */}
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 text-center"
-        >
-          <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-              Always Learning 📚
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              I'm constantly exploring new technologies and improving my skills.
-              Currently focusing on advanced React patterns, TypeScript, and
-              cloud architecture.
-            </p>
-          </div>
-        </Motion.div>
       </Motion.div>
     </Section>
   );

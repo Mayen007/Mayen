@@ -45,6 +45,7 @@ export const Activity = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
+        className="max-w-6xl mx-auto"
       >
         {/* Section Header */}
         <Motion.div

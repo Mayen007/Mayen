@@ -60,13 +60,27 @@ export const About = () => {
               My Story
             </h3>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              {user?.bio ||
-                "I'm a passionate Full-Stack Developer based in Nairobi, Kenya. I love crafting code by day and breaking it by night, building the web one bug fix at a time."}
+              I'm a passionate Full-Stack Developer based in Nairobi, Kenya,
+              currently pursuing a BSc in Information Technology at Mount Kenya
+              University (graduating 2027). I love crafting elegant solutions to
+              complex problems, with a keen eye for clean, intuitive user
+              interfaces.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+              I specialize in the MERN stack (MongoDB, Express.js, React,
+              Node.js), building full-stack applications from the ground up.
+              From designing scalable APIs and robust backend architectures to
+              creating responsive, modern frontends, I enjoy working across the
+              entire development stack. I'm driven by the joy of continuous
+              learning and solving real-world challenges with clean,
+              maintainable code.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              With a strong focus on modern web technologies and best practices,
-              I create responsive, user-friendly applications that solve
-              real-world problems.
+              My career direction is focused on mastering full-stack development
+              and systems design, with particular interest in backend
+              engineering and cloud architectures. I believe great software is
+              built on clean code, thoughtful design, and a deep understanding
+              of user needs.
             </p>
           </Motion.div>
 
@@ -157,7 +171,7 @@ export const About = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mt-8"
         >
-              {[
+          {[
             { label: "Projects", value: user?.public_repos || 0 },
             { label: "Gists", value: user?.public_gists || 0 },
             { label: "Followers", value: user?.followers || 0 },
@@ -175,6 +189,41 @@ export const About = () => {
               </div>
             </div>
           ))}
+        </Motion.div>
+
+        {/* Resume Download */}
+        <Motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-12 text-center"
+        >
+          <Motion.a
+            href="/Mayen_Akech_Resume.pdf"
+            download="Mayen_Akech_Resume.pdf"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            Download Resume / CV
+          </Motion.a>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
+            PDF format • Updated November 2025
+          </p>
         </Motion.div>
       </Motion.div>
     </Section>

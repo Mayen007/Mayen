@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mayen Akech - CV</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #fff;
+      }
+
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.5in;
+        margin: 0 auto;
+        background: white;
+        position: relative;
+      }
+
+      /* Header Section */
+      .header {
+        text-align: center;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #6366f1;
+        margin-bottom: 20px;
+      }
+
+      .header h1 {
+        font-size: 32px;
+        color: #1e293b;
+        margin-bottom: 6px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .header .title {
+        font-size: 16px;
+        color: #6366f1;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      .contact-info a {
+        color: #6366f1;
+        text-decoration: none;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      /* Section Styles */
+      .section {
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        color: #1e293b;
+        font-weight: 700;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #e2e8f0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Summary */
+      .summary {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #475569;
+        text-align: justify;
+      }
+
+      /* Education & Experience */
+      .timeline-item {
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 3px solid #6366f1;
+      }
+
+      .timeline-item h3 {
+        font-size: 15px;
+        color: #1e293b;
+        margin-bottom: 3px;
+      }
+
+      .timeline-item .meta {
+        font-size: 14px;
+        color: #6366f1;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .timeline-item .date {
+        font-size: 13px;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+
+      .timeline-item ul {
+        margin-left: 18px;
+        margin-top: 5px;
+      }
+
+      .timeline-item li {
+        font-size: 13px;
+        color: #475569;
+        margin-bottom: 4px;
+        line-height: 1.5;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .skill-category h4 {
+        font-size: 16px;
+        color: #1e293b;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-tag {
+        background: #f1f5f9;
+        color: #475569;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      /* Projects */
+      .project {
+        margin-bottom: 12px;
+      }
+
+      .project h4 {
+        font-size: 14px;
+        color: #1e293b;
+        margin-bottom: 3px;
+        font-weight: 600;
+      }
+
+      .project .tech {
+        font-size: 11px;
+        color: #6366f1;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      .project p {
+        font-size: 13px;
+        color: #475569;
+        line-height: 1.5;
+      }
+
+      .project a {
+        color: #6366f1;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      /* Page Break */
+      .page-break {
+        padding-top: 0;
+        margin-top: 0;
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        .page {
+          margin: 0;
+          padding: 0.4in;
+          width: 8.5in;
+          min-height: 11in;
+        }
+
+      
+      }
+
+      /* Two Column Layout for Skills */
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PAGE 1 -->
+    <div class="page">
+      <!-- Header -->
+      <div class="header">
+        <h1>MAYEN AKECH</h1>
+        <div class="title">Full-Stack Developer</div>
+        <div class="contact-info">
+          <span><i class="fas fa-envelope"></i> mayenakech9@gmail.com</span> |
+          <span
+            ><i class="fab fa-linkedin"></i>
+            <a href="https://linkedin.com/in/mayen-akech" target="_blank"
+              >linkedin.com/in/mayen-akech</a
+            ></span
+          >
+          |
+          <span
+            ><i class="fab fa-github"></i>
+            <a href="https://github.com/Mayen007" target="_blank"
+              >github.com/Mayen007</a
+            ></span
+          >|
+          <span><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</span>
+        </div>
+      </div>
+
+      <!-- Professional Summary -->
+      <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <div class="summary">
+          Passionate Full-Stack Developer specializing in the MERN stack
+          (MongoDB, Express.js, React, Node.js) with a strong foundation in
+          building scalable web applications. Currently pursuing a BSc in
+          Information Technology at Mount Kenya University. Experienced in
+          developing responsive frontends, designing RESTful APIs, and
+          implementing robust backend architectures. Driven by continuous
+          learning and a commitment to writing clean, maintainable code that
+          solves real-world problems.
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <div class="section-title">Education</div>
+
+        <div class="timeline-item">
+          <h3>Bachelor of Science in Information Technology</h3>
+          <div class="meta">Mount Kenya University</div>
+          <div class="date">Expected Graduation: 2027 | Nairobi, Kenya</div>
+          <ul>
+            <li>
+              Specializing in software development, database management, and
+              systems design
+            </li>
+            <li>
+              Focus on modern web technologies and software engineering
+              principles
+            </li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>MERN Stack Development Specialization</h3>
+          <div class="meta">Power Learn Project Africa</div>
+          <div class="date">2025 | Remote</div>
+          <ul>
+            <li>
+              Intensive training in MongoDB, Express.js, React, and Node.js
+            </li>
+            <li>Building production-ready full-stack applications</li>
+            <li>
+              Modern development practices including Git workflow, testing, and
+              deployment
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="section">
+        <div class="section-title">Technical Skills</div>
+
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Frontend Development</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">Vite</span>
+              <span class="skill-tag">Framer Motion</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Backend Development</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">RESTful APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Tools & Platforms</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Vercel</span>
+              <span class="skill-tag">Netlify</span>
+              <span class="skill-tag">Render</span>
+              <span class="skill-tag">Firebase</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Experience -->
+      <div class="section">
+        <div class="section-title">Professional Experience</div>
+
+        <div class="timeline-item">
+          <h3>Full-Stack Developer</h3>
+          <div class="meta">Freelance / Personal Projects</div>
+          <div class="date">2023 - Present</div>
+          <ul>
+            <li>
+              Developed and deployed multiple full-stack web applications using
+              the MERN stack with MongoDB, Express.js, React, and Node.js
+            </li>
+            <li>
+              Designed RESTful APIs with JWT authentication, role-based access
+              control, and optimized database queries
+            </li>
+            <li>
+              Built responsive, mobile-first user interfaces with React,
+              Tailwind CSS, and modern development practices
+            </li>
+            <li>
+              Integrated third-party APIs including GitHub API, Cloudinary for
+              image management, and implemented Chrome extensions
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page page-break">
+      <!-- Projects -->
+      <div class="section">
+        <div class="section-title">Featured Projects</div>
+
+        <div class="project">
+          <h4>Professional Portfolio Website</h4>
+          <div class="tech">
+            React · Vite · Tailwind CSS · Framer Motion · GitHub API
+          </div>
+          <p>
+            Modern, responsive portfolio website with dark mode, dynamic GitHub
+            integration, and optimized performance. Features real-time
+            repository data fetching, animated UI components, and comprehensive
+            SEO optimization. Deployed on Netlify with CI/CD pipeline.
+          </p>
+          <a href="https://github.com/Mayen007/Mayen" target="_blank"
+            >View on GitHub →</a
+          >
+        </div>
+
+        <div class="project">
+          <h4>Reviwa - Smart Waste Management Platform</h4>
+          <div class="tech">
+            MongoDB · Express.js · React · Node.js · Cloudinary · Leaflet Maps
+          </div>
+          <p>
+            Community waste management platform with geolocation-based
+            reporting, interactive maps, eco-points system, and admin dashboard.
+            Features role-based access control and email notifications.
+          </p>
+          <a href="https://github.com/Mayen007/reviwa" target="_blank"
+            >View on GitHub →</a
+          >
+        </div>
+
+        <div class="project">
+          <h4>Read It Later - Article Bookmark Manager</h4>
+          <div class="tech">
+            MongoDB · Express.js · React · Node.js · Chrome Extension · Cheerio
+          </div>
+          <p>
+            Article bookmarking application with automatic metadata extraction.
+            Includes Chrome extension, search/filter capabilities, and MongoDB
+            backend for data persistence.
+          </p>
+          <a href="https://github.com/Mayen007/read-it-later" target="_blank"
+            >View on GitHub →</a
+          >
+        </div>
+      </div>
+
+      <!-- Certifications & Training -->
+      <div class="section">
+        <div class="section-title">Certifications & Training</div>
+
+        <div class="timeline-item">
+          <h3>MERN Stack Development</h3>
+          <div class="meta">Power Learn Project Africa</div>
+          <div class="date">2025</div>
+        </div>
+
+        <div class="timeline-item">
+          <h3>freeCodeCamp Certifications</h3>
+          <div class="meta">freeCodeCamp.org</div>
+          <div class="date">2022 - Present</div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        style="
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 2px solid #e2e8f0;
+          text-align: center;
+          color: #94a3b8;
+          font-size: 12px;
+        "
+      >
+        <p>References available upon request</p>
+        <p style="margin-top: 5px">Last Updated: November 2025</p>
+      </div>
+    </div>
+  </body>
+</html>
