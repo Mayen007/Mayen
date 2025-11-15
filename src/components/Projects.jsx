@@ -149,13 +149,13 @@ export const Projects = () => {
         {!isLoading && !isError && pinnedRepos && pinnedRepos.length > 0 && (
           <Motion.div
             variants={headingVariants}
-            className="text-center mt-8 sm:mt-12"
+            className="text-center mt-8 sm:mt-12 px-4"
           >
             <Motion.a
               href="https://github.com/Mayen007?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium text-sm sm:text-base"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium text-xs sm:text-sm md:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

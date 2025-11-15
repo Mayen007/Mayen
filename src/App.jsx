@@ -11,6 +11,8 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
+import { Activity } from "./components/Activity";
+import { Contact } from "./components/Contact";
 
 function App() {
   return (
@@ -34,17 +36,11 @@ function App() {
             {/* Projects Section */}
             <Projects />
 
-            {/* Contact Section - Coming Soon */}
-            <section id="contact" className="py-20">
-              <div className="container-custom text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
-                  Contact
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Section coming soon...
-                </p>
-              </div>
-            </section>
+            {/* Activity Section */}
+            <Activity />
+
+            {/* Contact Section */}
+            <Contact />
           </main>
 
           {/* Footer */}

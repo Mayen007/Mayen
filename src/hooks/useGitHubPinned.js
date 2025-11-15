@@ -65,6 +65,42 @@ const fetchGitHubPinned = async () => {
 
     const pinnedRepos = response.user?.pinnedItems?.nodes || [];
 
+    // If no pinned repos, fall back to top repos by stars
+    if (pinnedRepos.length === 0) {
+      const { data: repos } = await octokit.rest.repos.listForUser({
+        username: GITHUB_USERNAME,
+        sort: 'updated',
+        per_page: 6,
+      });
+
+      const filteredRepos = repos
+        .filter(repo => !repo.fork)
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        .slice(0, 6);
+
+      const transformedRepos = filteredRepos.map(repo => ({
+        id: repo.id.toString(),
+        name: repo.name,
+        description: repo.description,
+        url: repo.html_url,
+        homepageUrl: repo.homepage,
+        stargazerCount: repo.stargazers_count,
+        forkCount: repo.forks_count,
+        createdAt: repo.created_at,
+        updatedAt: repo.updated_at,
+        primaryLanguage: repo.language ? {
+          name: repo.language,
+          color: '#000000',
+        } : null,
+        languages: repo.language ? [{ name: repo.language, color: '#000000' }] : [],
+        openGraphImageUrl: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
+        topics: repo.topics || [],
+      }));
+
+      setCachedData(CACHE_KEY, transformedRepos);
+      return transformedRepos;
+    }
+
     // Transform data for use in ProjectCard component
     const transformedRepos = pinnedRepos.map(repo => ({
       id: repo.id,
@@ -90,12 +126,9 @@ const fetchGitHubPinned = async () => {
 
     return transformedRepos;
   } catch (error) {
-    console.error('Error fetching pinned repos:', error);
-
     // Try to return cached data on error
     const cached = getCachedData(CACHE_KEY);
     if (cached) {
-      console.log('Returning cached pinned repos data');
       return cached;
     }
 

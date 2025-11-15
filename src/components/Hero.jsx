@@ -152,29 +152,29 @@ export const Hero = () => {
           {user && (
             <Motion.div
               variants={itemVariants}
-              className="flex flex-wrap justify-center gap-6 md:gap-12 mb-12"
+              className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-4"
             >
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">
+              <div className="text-center min-w-[90px]">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                   {user.public_repos}
                 </div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                   Repositories
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">
+              <div className="text-center min-w-[90px]">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                   {user.followers}
                 </div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                   Followers
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient">
+              <div className="text-center min-w-[90px]">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                   {user.following}
                 </div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                   Following
                 </div>
               </div>
@@ -211,7 +211,7 @@ export const Hero = () => {
           {/* Social Links */}
           <Motion.div
             variants={itemVariants}
-            className="flex justify-center gap-4"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4"
           >
             {socialLinks.map((link) => {
               const Icon = link.icon;
@@ -221,12 +221,12 @@ export const Hero = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 shadow-lg hover:shadow-xl"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={link.name}
                 >
-                  <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300" />
                 </Motion.a>
               );
             })}

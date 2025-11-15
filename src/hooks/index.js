@@ -7,3 +7,4 @@ export { useTheme } from './useTheme';
 export { useGitHubUser } from './useGitHubUser';
 export { useGitHubRepos, useTopRepos, useFeaturedRepos } from './useGitHubRepos';
 export { useGitHubPinned } from './useGitHubPinned';
+export { useGitHubStats } from './useGitHubStats';
