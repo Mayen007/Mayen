@@ -24,13 +24,15 @@ const fetchGitHubUser = async () => {
 
     return data;
   } catch (error) {
-    console.error('Error fetching GitHub user:', error);
-
     // Try to return cached data on error
     const cached = getCachedData(CACHE_KEY);
     if (cached) {
-      console.log('Returning cached user data');
       return cached;
+    }
+
+    // Only log non-network errors
+    if (!error.message?.includes('fetch')) {
+      console.error('Error fetching GitHub user:', error);
     }
 
     throw new Error(handleGitHubError(error));

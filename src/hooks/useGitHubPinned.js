@@ -132,6 +132,11 @@ const fetchGitHubPinned = async () => {
       return cached;
     }
 
+    // Only log non-network errors
+    if (!error.message?.includes('fetch') && !error.message?.includes('Network')) {
+      console.error('Error fetching pinned repos:', error);
+    }
+
     throw new Error(handleGitHubError(error));
   }
 };

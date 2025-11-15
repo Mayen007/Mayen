@@ -64,8 +64,8 @@ A modern, responsive portfolio website showcasing my projects, skills, and exper
    Create a `.env` file in the root directory:
 
    ```env
-   VITE_GITHUB_TOKEN=your_github_personal_access_token
-   VITE_GITHUB_USERNAME=Mayen007
+   VITE_GITHUB_TOKEN=your_github_personal_access_token_here
+   VITE_GITHUB_USERNAME=your_github_username_here
    ```
 
    Get your GitHub token at: https://github.com/settings/tokens
@@ -161,6 +161,54 @@ Mayen/
 | ---------------------- | ---------------------------- | -------- |
 | `VITE_GITHUB_TOKEN`    | GitHub Personal Access Token | Yes      |
 | `VITE_GITHUB_USERNAME` | Your GitHub username         | Yes      |
+
+## 🚀 Deployment
+
+### Deploy to Netlify
+
+1. **Push to GitHub**
+
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Connect to Netlify**
+
+   - Go to [Netlify](https://netlify.com) and sign in
+   - Click "Add new site" → "Import an existing project"
+   - Connect your GitHub account and select the repository
+   - Netlify will auto-detect the build settings from `netlify.toml`
+
+3. **Configure Environment Variables**
+
+   In Netlify dashboard, go to:
+
+   - Site settings → Environment variables
+   - Add the following variables:
+     - `VITE_GITHUB_TOKEN`: Your GitHub Personal Access Token
+     - `VITE_GITHUB_USERNAME`: `Mayen007`
+
+4. **Deploy**
+
+   - Click "Deploy site"
+   - Your site will be live at `https://your-site-name.netlify.app`
+   - Set up a custom domain in Site settings → Domain management
+
+### Manual Deployment
+
+```bash
+# Build the project
+npm run build
+
+# Deploy the dist folder to your hosting service
+# The build output is in the 'dist' directory
+```
+
+### Continuous Deployment
+
+Netlify automatically deploys when you push to the main branch. Configure deploy contexts in `netlify.toml` for branch previews and production deployments.
 
 ## 🤝 Contributing
 

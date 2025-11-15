@@ -38,6 +38,13 @@ export const checkRateLimit = async () => {
  * Provides user-friendly error messages
  */
 export const handleGitHubError = (error) => {
+  // Network errors (offline, timeout, DNS issues)
+  if (error.message?.includes('fetch') ||
+    error.message?.includes('Network') ||
+    error.message?.includes('Failed to fetch')) {
+    return 'Network error. Using cached data.';
+  }
+
   if (error.status === 403) {
     return 'API rate limit exceeded. Please try again later.';
   }

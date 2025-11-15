@@ -6,6 +6,7 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "./context/ThemeContext";
 import { queryClient } from "./lib/queryClient";
+import { SEO } from "./components/SEO";
 import { Header, Footer } from "./components/layout";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -18,6 +19,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        {/* SEO Meta Tags */}
+        <SEO />
+
         <div className="min-h-screen flex flex-col">
           {/* Header/Navigation */}
           <Header />

@@ -18,8 +18,15 @@ export const queryClient = new QueryClient({
       staleTime: 1000 * 60 * 10, // 10 minutes
       gcTime: 1000 * 60 * 15, // 15 minutes (formerly cacheTime)
       refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      retry: 1,
+      refetchOnReconnect: true, // Retry when network reconnects
+      retry: (failureCount, error) => {
+        // Don't retry network errors - use cache instead
+        if (error.message?.includes('fetch') ||
+          error.message?.includes('Network')) {
+          return false;
+        }
+        return failureCount < 2;
+      },
       retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     },
   },
