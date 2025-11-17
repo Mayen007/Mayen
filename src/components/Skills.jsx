@@ -26,7 +26,8 @@ import {
   SiVite,
   SiFramer,
 } from "react-icons/si";
-import { VscCode } from "react-icons/vsc";
+// import { VscCode } from "react-icons/vsc";
+import { VscVscode } from "react-icons/vsc";
 import { Section } from "./ui/Container";
 
 export const Skills = () => {
@@ -63,7 +64,7 @@ export const Skills = () => {
       skills: [
         { name: "Git", icon: SiGit, color: "#F05032" },
         { name: "GitHub", icon: SiGithub, color: "#181717" },
-        { name: "VS Code", icon: VscCode, color: "#007ACC" },
+        { name: "VS Code", icon: VscVscode, color: "#007ACC" },
         { name: "Vercel", icon: SiVercel, color: "#000000" },
         { name: "Netlify", icon: SiNetlify, color: "#00C7B7" },
         { name: "Render", icon: SiRender, color: "#46E3B7" },

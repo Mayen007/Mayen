@@ -10,8 +10,8 @@ import {
   FiLinkedin,
   FiMapPin,
   FiExternalLink,
+  FiPhone,
 } from "react-icons/fi";
-import { SiFreecodecamp } from "react-icons/si";
 import { Section } from "./ui/Container";
 import { useGitHubUser } from "../hooks";
 
@@ -42,9 +42,19 @@ export const Contact = () => {
     {
       icon: FiMail,
       label: "Email",
-      value: user?.email || "mayenakech1@gmail.com",
-      href: `mailto:${user?.email || "mayenakech1@gmail.com"}`,
+      value: user?.email || "mayenakech9@gmail.com",
+      href: `mailto:${user?.email || "mayenakech9@gmail.com"}`,
       color: "text-red-500",
+    },
+    {
+      icon: FiPhone,
+      label: "Phone",
+      // don't display the number publicly — prompt users to request it via email
+      value: "Available on request",
+      href: `mailto:${
+        user?.email || "mayenakech9@gmail.com"
+      }?subject=Phone%20Number%20Request&body=Hi%20Mayen,%0A%0APlease%20share%20your%20phone%20number%20so%20we%20can%20connect.`,
+      color: "text-green-500 dark:text-green-400",
     },
     {
       icon: FiGithub,
@@ -58,14 +68,7 @@ export const Contact = () => {
       label: "LinkedIn",
       value: "Mayen Akech",
       href: "https://linkedin.com/in/mayen-akech",
-      color: "text-blue-600",
-    },
-    {
-      icon: SiFreecodecamp,
-      label: "freeCodeCamp",
-      value: "@Mayen007",
-      href: "https://www.freecodecamp.org/Mayen007",
-      color: "text-green-600",
+      color: "text-blue-600 dark:text-blue-400",
     },
   ];
 
@@ -152,38 +155,6 @@ export const Contact = () => {
             </div>
           </Motion.div>
         )}
-
-        {/* Additional Info */}
-        <Motion.div
-          variants={itemVariants}
-          className="mt-8 sm:mt-12 text-center"
-        >
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4">
-            Prefer something else? Find me on other platforms:
-          </p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {[
-              { name: "GitHub", href: "https://github.com/Mayen007" },
-              { name: "LinkedIn", href: "https://linkedin.com/in/mayen-akech" },
-              {
-                name: "freeCodeCamp",
-                href: "https://www.freecodecamp.org/Mayen007",
-              },
-            ].map((platform, index) => (
-              <Motion.a
-                key={index}
-                href={platform.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors border border-gray-200 dark:border-gray-700 font-medium text-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {platform.name}
-              </Motion.a>
-            ))}
-          </div>
-        </Motion.div>
       </Motion.div>
     </Section>
   );

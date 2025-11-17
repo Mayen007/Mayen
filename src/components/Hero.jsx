@@ -154,7 +154,7 @@ export const Hero = () => {
           {user && (
             <Motion.div
               variants={itemVariants}
-              className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-4"
+              className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-4"
             >
               <div className="text-center min-w-[90px]">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">

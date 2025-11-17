@@ -70,7 +70,7 @@ export const Activity = () => {
             Contribution Calendar
           </h3>
 
-          <div className="w-full">
+          <div className="w-full flex justify-center">
             <GitHubCalendar
               username={GITHUB_USERNAME}
               colorScheme={isDark ? "dark" : "light"}
