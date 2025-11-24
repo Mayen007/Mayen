@@ -9,7 +9,12 @@
 
 /* Global Styles */
 @layer base {
-  * {
+
+  /* Use border-box sizing to avoid overflow from padding/margins */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
     @apply border-gray-200 dark:border-gray-700;
   }
 
@@ -38,7 +43,6 @@
 
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
-    max-width: 100vw;
   }
 }
 

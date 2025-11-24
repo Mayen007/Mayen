@@ -67,7 +67,7 @@ export const Contact = () => {
       icon: FiLinkedin,
       label: "LinkedIn",
       value: "Mayen Akech",
-      href: "https://linkedin.com/in/mayen-akech",
+      href: "https://linkedin.com/in/mayenakech",
       color: "text-blue-600 dark:text-blue-400",
     },
   ];

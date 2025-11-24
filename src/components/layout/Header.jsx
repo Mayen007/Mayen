@@ -142,18 +142,18 @@ export const Header = () => {
                 href="https://github.com/Mayen007"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 transition-colors"
+                whileHover={{ scale: 1.1, rotate: 0 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <FiGithub className="w-5 h-5" />
               </Motion.a>
               <Motion.a
-                href="https://linkedin.com/in/mayen-akech"
+                href="https://linkedin.com/in/mayenakech"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                whileHover={{ scale: 1.1, rotate: -5 }}
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 transition-colors"
+                whileHover={{ scale: 1.1, rotate: 0 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <FiLinkedin className="w-5 h-5" />
@@ -163,7 +163,7 @@ export const Header = () => {
             {/* Theme Toggle */}
             <Motion.button
               onClick={toggleTheme}
-              className="ml-2 p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors"
+              className="ml-2 p-2 rounded-lg transition-colors"
               aria-label="Toggle theme"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9, rotate: 180 }}
@@ -290,7 +290,7 @@ export const Header = () => {
                     <FiGithub className="w-5 h-5" />
                   </Motion.a>
                   <Motion.a
-                    href="https://linkedin.com/in/mayen-akech"
+                    href="https://linkedin.com/in/mayenakech"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"

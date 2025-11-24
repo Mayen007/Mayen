@@ -149,7 +149,7 @@ export const Skills = () => {
                       key={skill.name}
                       variants={itemVariants}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                      className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <div className="flex flex-col items-center text-center space-y-3">
                         <div
