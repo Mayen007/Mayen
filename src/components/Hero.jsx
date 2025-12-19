@@ -127,7 +127,7 @@ export const Hero = () => {
           {/* Name */}
           <Motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
+            className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
           >
             <span className="text-gradient break-words">
               {user?.name || "Mayen Akech"}
@@ -137,7 +137,7 @@ export const Hero = () => {
           {/* Tagline */}
           <Motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-4 font-medium"
+            className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-4 font-medium"
           >
             Full-Stack Developer
           </Motion.p>
@@ -154,9 +154,9 @@ export const Hero = () => {
           {user && (
             <Motion.div
               variants={itemVariants}
-              className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-4"
+              className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-4"
             >
-              <div className="text-center min-w-[90px]">
+              <div className="text-center min-w-[80px] sm:min-w-[90px]">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                   {user.public_repos}
                 </div>
@@ -164,7 +164,7 @@ export const Hero = () => {
                   Repositories
                 </div>
               </div>
-              <div className="text-center min-w-[90px]">
+              <div className="text-center min-w-[80px] sm:min-w-[90px]">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                   {user.followers}
                 </div>
@@ -172,7 +172,7 @@ export const Hero = () => {
                   Followers
                 </div>
               </div>
-              <div className="text-center min-w-[90px]">
+              <div className="text-center min-w-[80px] sm:min-w-[90px]">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                   {user.following}
                 </div>

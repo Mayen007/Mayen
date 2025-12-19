@@ -3,10 +3,27 @@
  * Individual project card with GitHub repo data
  */
 
+import { useState, useEffect } from "react";
 import { motion as Motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiStar, FiGitBranch } from "react-icons/fi";
 
 export const ProjectCard = ({ project, index }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [imageError, setImageError] = useState(false);
+
+  // Lazy load image with delay to prevent rate limiting
+  useEffect(() => {
+    if (!project.openGraphImageUrl) return;
+
+    // Stagger image loading: 500ms delay per card
+    const delay = index * 500;
+    const timer = setTimeout(() => {
+      setImageSrc(project.openGraphImageUrl);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [project.openGraphImageUrl, index]);
+
   // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -31,12 +48,13 @@ export const ProjectCard = ({ project, index }) => {
     >
       {/* Project Image/Thumbnail */}
       <div className="relative h-48 sm:h-56 md:h-48 bg-gradient-to-br from-primary-500 to-purple-600 overflow-hidden">
-        {project.openGraphImageUrl ? (
+        {imageSrc && !imageError ? (
           <img
-            src={project.openGraphImageUrl}
+            src={imageSrc}
             alt={project.name}
             className="w-full h-full object-cover group-hover:scale-100 transition-transform duration-500"
             loading="lazy"
+            onError={() => setImageError(true)}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
