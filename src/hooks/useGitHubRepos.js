@@ -4,7 +4,12 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { octokit, GITHUB_USERNAME, handleGitHubError } from '../lib/github';
+import {
+  GITHUB_USERNAME,
+  handleGitHubError,
+  isGitHubAuthError,
+  withOctokitFallback,
+} from '../lib/github';
 import { getCachedData, setCachedData } from '../utils/cache';
 
 const CACHE_KEY = 'github_repos';
@@ -15,12 +20,14 @@ const CACHE_KEY = 'github_repos';
  */
 const fetchGitHubRepos = async () => {
   try {
-    const { data } = await octokit.rest.repos.listForUser({
-      username: GITHUB_USERNAME,
-      sort: 'updated',
-      per_page: 100,
-      type: 'owner',
-    });
+    const { data } = await withOctokitFallback((client) =>
+      client.rest.repos.listForUser({
+        username: GITHUB_USERNAME,
+        sort: 'updated',
+        per_page: 100,
+        type: 'owner',
+      })
+    );
 
     // Filter out forked repos (optional)
     const ownRepos = data.filter(repo => !repo.fork);
@@ -30,7 +37,9 @@ const fetchGitHubRepos = async () => {
 
     return ownRepos;
   } catch (error) {
-    console.error('Error fetching GitHub repos:', error);
+    if (!isGitHubAuthError(error)) {
+      console.error('Error fetching GitHub repos:', error);
+    }
 
     // Try to return cached data on error
     const cached = getCachedData(CACHE_KEY);

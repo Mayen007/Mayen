@@ -4,7 +4,12 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { octokit, GITHUB_USERNAME, handleGitHubError } from '../lib/github';
+import {
+  GITHUB_USERNAME,
+  handleGitHubError,
+  isGitHubAuthError,
+  withOctokitFallback,
+} from '../lib/github';
 import { getCachedData, setCachedData } from '../utils/cache';
 
 const CACHE_KEY = 'github_user';
@@ -15,9 +20,11 @@ const CACHE_KEY = 'github_user';
  */
 const fetchGitHubUser = async () => {
   try {
-    const { data } = await octokit.rest.users.getByUsername({
-      username: GITHUB_USERNAME,
-    });
+    const { data } = await withOctokitFallback((client) =>
+      client.rest.users.getByUsername({
+        username: GITHUB_USERNAME,
+      })
+    );
 
     // Cache the result
     setCachedData(CACHE_KEY, data);
@@ -31,7 +38,7 @@ const fetchGitHubUser = async () => {
     }
 
     // Only log non-network errors
-    if (!error.message?.includes('fetch')) {
+    if (!error.message?.includes('fetch') && !isGitHubAuthError(error)) {
       console.error('Error fetching GitHub user:', error);
     }
 

@@ -4,7 +4,13 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { octokit, GITHUB_USERNAME, handleGitHubError } from '../lib/github';
+import {
+  GITHUB_USERNAME,
+  handleGitHubError,
+  isGitHubAuthError,
+  withGraphQLFallback,
+  withOctokitFallback,
+} from '../lib/github';
 import { getCachedData, setCachedData } from '../utils/cache';
 
 const CACHE_KEY = 'github_stats';
@@ -15,16 +21,20 @@ const CACHE_KEY = 'github_stats';
 const fetchGitHubStats = async () => {
   try {
     // Fetch user data
-    const { data: user } = await octokit.rest.users.getByUsername({
-      username: GITHUB_USERNAME,
-    });
+    const { data: user } = await withOctokitFallback((client) =>
+      client.rest.users.getByUsername({
+        username: GITHUB_USERNAME,
+      })
+    );
 
     // Fetch all repositories to calculate total stars and forks
-    const { data: repos } = await octokit.rest.repos.listForUser({
-      username: GITHUB_USERNAME,
-      per_page: 100,
-      sort: 'updated',
-    });
+    const { data: repos } = await withOctokitFallback((client) =>
+      client.rest.repos.listForUser({
+        username: GITHUB_USERNAME,
+        per_page: 100,
+        sort: 'updated',
+      })
+    );
 
     // Calculate total stars and forks
     const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
@@ -51,21 +61,43 @@ const fetchGitHubStats = async () => {
       }
     `;
 
-    const contributionData = await octokit.graphql(contributionQuery);
-    const calendar = contributionData.user.contributionsCollection.contributionCalendar;
+    let totalContributions = 0;
+    let contributionYears = [];
+    let currentStreak = 0;
+    let longestStreak = 0;
 
-    // Calculate streaks
-    const days = calendar.weeks.flatMap(week => week.contributionDays);
-    const { currentStreak, longestStreak } = calculateStreaks(days);
+    try {
+      const contributionData = await withGraphQLFallback(
+        (client) => client.graphql(contributionQuery),
+        null
+      );
+
+      if (contributionData) {
+        const calendar = contributionData.user.contributionsCollection.contributionCalendar;
+
+        totalContributions = calendar.totalContributions;
+        contributionYears = contributionData.user.contributionsCollection.contributionYears;
+
+        // Calculate streaks
+        const days = calendar.weeks.flatMap(week => week.contributionDays);
+        const streaks = calculateStreaks(days);
+        currentStreak = streaks.currentStreak;
+        longestStreak = streaks.longestStreak;
+      }
+    } catch (error) {
+      if (!isGitHubAuthError(error)) {
+        throw error;
+      }
+    }
 
     const stats = {
-      totalContributions: calendar.totalContributions,
+      totalContributions,
       totalRepos: user.public_repos,
       totalStars,
       totalForks,
       currentStreak,
       longestStreak,
-      contributionYears: contributionData.user.contributionsCollection.contributionYears,
+      contributionYears,
     };
 
     // Cache the result
@@ -73,7 +105,9 @@ const fetchGitHubStats = async () => {
 
     return stats;
   } catch (error) {
-    console.error('Error fetching GitHub stats:', error);
+    if (!isGitHubAuthError(error)) {
+      console.error('Error fetching GitHub stats:', error);
+    }
 
     // Try to return cached data on error
     const cached = getCachedData(CACHE_KEY);

@@ -4,7 +4,13 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { octokit, GITHUB_USERNAME, handleGitHubError } from '../lib/github';
+import {
+  GITHUB_USERNAME,
+  handleGitHubError,
+  isGitHubAuthError,
+  withGraphQLFallback,
+  withOctokitFallback,
+} from '../lib/github';
 import { getCachedData, setCachedData } from '../utils/cache';
 
 const CACHE_KEY = 'github_pinned';
@@ -59,19 +65,29 @@ const PINNED_REPOS_QUERY = `
  */
 const fetchGitHubPinned = async () => {
   try {
-    const response = await octokit.graphql(PINNED_REPOS_QUERY, {
-      username: GITHUB_USERNAME,
-    });
+    let pinnedRepos = [];
 
-    const pinnedRepos = response.user?.pinnedItems?.nodes || [];
+    // GraphQL requires valid auth; if auth is missing/invalid, fallback to REST below.
+    const response = await withGraphQLFallback(
+      (client) => client.graphql(PINNED_REPOS_QUERY, {
+        username: GITHUB_USERNAME,
+      }),
+      null
+    );
+
+    if (response) {
+      pinnedRepos = response.user?.pinnedItems?.nodes || [];
+    }
 
     // If no pinned repos, fall back to top repos by stars
     if (pinnedRepos.length === 0) {
-      const { data: repos } = await octokit.rest.repos.listForUser({
-        username: GITHUB_USERNAME,
-        sort: 'updated',
-        per_page: 6,
-      });
+      const { data: repos } = await withOctokitFallback((client) =>
+        client.rest.repos.listForUser({
+          username: GITHUB_USERNAME,
+          sort: 'updated',
+          per_page: 6,
+        })
+      );
 
       const filteredRepos = repos
         .filter(repo => !repo.fork)
@@ -133,7 +149,11 @@ const fetchGitHubPinned = async () => {
     }
 
     // Only log non-network errors
-    if (!error.message?.includes('fetch') && !error.message?.includes('Network')) {
+    if (
+      !error.message?.includes('fetch') &&
+      !error.message?.includes('Network') &&
+      !isGitHubAuthError(error)
+    ) {
       console.error('Error fetching pinned repos:', error);
     }
 

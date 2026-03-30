@@ -120,7 +120,7 @@ export const Hero = () => {
           {/* Greeting */}
           <Motion.div variants={itemVariants}>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2">
-              👋 Hello, I'm
+              Hello, I'm
             </p>
           </Motion.div>
 
@@ -147,7 +147,7 @@ export const Hero = () => {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto px-4"
           >
-            {user?.bio || "Building Solutions, One Bug Fix at a Time 🚀"}
+            {user?.bio || "Building Solutions, One Bug Fix at a Time."}
           </Motion.p>
 
           {/* Stats */}
