@@ -58,10 +58,10 @@ export const Footer = () => {
           {/* Copyright */}
           <div className="text-center text-gray-600 dark:text-gray-400">
             <p className="text-sm">
-              © {currentYear} Mayen Akech. All rights reserved.
+              &copy; {currentYear} Mayen Akech. All rights reserved.
             </p>
             <p className="text-xs mt-2">
-              Built with React, Tailwind CSS & Framer Motion 🚀
+              Built with React, Tailwind CSS & Framer Motion
             </p>
           </div>
         </div>

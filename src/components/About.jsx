@@ -200,8 +200,8 @@ export const About = () => {
           className="mt-12 text-center"
         >
           <Motion.a
-            href="/Mayen_Akech_Resume.pdf"
-            download="Mayen_Akech_Resume.pdf"
+            href="/Mayen Akech Resume.pdf"
+            download="Mayen Akech Resume.pdf"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
@@ -219,7 +219,7 @@ export const About = () => {
                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            Download Resume / CV
+            Download Resume
           </Motion.a>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
             PDF format • Updated November 2025
