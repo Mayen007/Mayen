@@ -7,13 +7,16 @@ import { useState, useEffect } from "react";
 import { motion as Motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiStar, FiGitBranch } from "react-icons/fi";
 
+const USE_OPEN_GRAPH_IMAGES =
+  import.meta.env.VITE_GITHUB_USE_OPEN_GRAPH_IMAGES === "true";
+
 export const ProjectCard = ({ project, index }) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageError, setImageError] = useState(false);
 
   // Lazy load image with delay to prevent rate limiting
   useEffect(() => {
-    if (!project.openGraphImageUrl) return;
+    if (!USE_OPEN_GRAPH_IMAGES || !project.openGraphImageUrl) return;
 
     // Stagger image loading: 500ms delay per card
     const delay = index * 500;

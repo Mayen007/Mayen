@@ -20,11 +20,43 @@ const authenticatedOctokit = new Octokit({
 });
 
 let canUseAuthenticatedRequests = hasGitHubToken;
+let authValidationPromise = null;
 
 // Initialize Octokit client with authentication
 export const octokit = hasGitHubToken ? authenticatedOctokit : unauthenticatedOctokit;
 
 export const hasUsableGitHubAuth = () => canUseAuthenticatedRequests;
+
+/**
+ * Validate auth once and share the result across concurrent requests.
+ */
+const validateAuthenticatedClient = async () => {
+  if (!canUseAuthenticatedRequests) {
+    return false;
+  }
+
+  if (authValidationPromise) {
+    return authValidationPromise;
+  }
+
+  authValidationPromise = (async () => {
+    try {
+      await authenticatedOctokit.rest.users.getAuthenticated();
+      return true;
+    } catch (error) {
+      if (isGitHubAuthError(error)) {
+        canUseAuthenticatedRequests = false;
+        return false;
+      }
+
+      throw error;
+    } finally {
+      authValidationPromise = null;
+    }
+  })();
+
+  return authValidationPromise;
+};
 
 /**
  * Whether an error is caused by missing/invalid GitHub credentials
@@ -38,7 +70,12 @@ export const isGitHubAuthError = (error) => {
  * Run a REST request and automatically retry without auth if token is invalid
  */
 export const withOctokitFallback = async (operation) => {
-  const primaryClient = canUseAuthenticatedRequests ? authenticatedOctokit : unauthenticatedOctokit;
+  const shouldUseAuthenticatedClient = canUseAuthenticatedRequests
+    ? await validateAuthenticatedClient()
+    : false;
+  const primaryClient = shouldUseAuthenticatedClient
+    ? authenticatedOctokit
+    : unauthenticatedOctokit;
 
   try {
     return await operation(primaryClient);
@@ -57,6 +94,11 @@ export const withOctokitFallback = async (operation) => {
  */
 export const withGraphQLFallback = async (operation, fallbackValue = null) => {
   if (!canUseAuthenticatedRequests) {
+    return fallbackValue;
+  }
+
+  const shouldUseAuthenticatedClient = await validateAuthenticatedClient();
+  if (!shouldUseAuthenticatedClient) {
     return fallbackValue;
   }
 

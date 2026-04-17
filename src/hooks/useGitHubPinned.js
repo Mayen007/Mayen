@@ -13,7 +13,62 @@ import {
 } from '../lib/github';
 import { getCachedData, setCachedData } from '../utils/cache';
 
-const CACHE_KEY = 'github_pinned';
+const CACHE_KEY = 'github_pinned_v2';
+const FEATURED_REPOS = (import.meta.env.VITE_GITHUB_FEATURED_REPOS || '')
+  .split(',')
+  .map((name) => name.trim())
+  .filter(Boolean);
+
+const transformRepo = (repo) => ({
+  id: repo.id.toString(),
+  name: repo.name,
+  description: repo.description,
+  url: repo.html_url,
+  homepageUrl: repo.homepage,
+  stargazerCount: repo.stargazers_count,
+  forkCount: repo.forks_count,
+  createdAt: repo.created_at,
+  updatedAt: repo.updated_at,
+  primaryLanguage: repo.language ? {
+    name: repo.language,
+    color: '#000000',
+  } : null,
+  languages: repo.language ? [{ name: repo.language, color: '#000000' }] : [],
+  openGraphImageUrl: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
+  topics: repo.topics || [],
+});
+
+const sortReposByFeaturedOrder = (repos) => {
+  const orderMap = new Map(
+    FEATURED_REPOS.map((name, index) => [name.toLowerCase(), index])
+  );
+
+  return [...repos].sort((repoA, repoB) => {
+    const orderA = orderMap.get(repoA.name.toLowerCase()) ?? Number.MAX_SAFE_INTEGER;
+    const orderB = orderMap.get(repoB.name.toLowerCase()) ?? Number.MAX_SAFE_INTEGER;
+    return orderA - orderB;
+  });
+};
+
+const mergeWithFallbackRepos = (selectedRepos, fallbackRepos) => {
+  const selectedNames = new Set(selectedRepos.map((repo) => repo.name.toLowerCase()));
+  const mergedRepos = [...selectedRepos];
+
+  for (const repo of fallbackRepos) {
+    if (mergedRepos.length >= 6) {
+      break;
+    }
+
+    if (selectedNames.has(repo.name.toLowerCase())) {
+      continue;
+    }
+
+    mergedRepos.push(repo);
+    selectedNames.add(repo.name.toLowerCase());
+  }
+
+  return mergedRepos.slice(0, 6);
+};
 
 /**
  * GraphQL query to fetch pinned repositories
@@ -79,7 +134,45 @@ const fetchGitHubPinned = async () => {
       pinnedRepos = response.user?.pinnedItems?.nodes || [];
     }
 
-    // If no pinned repos, fall back to top repos by stars
+    // If no pinned repos, optionally use manually configured featured repos first.
+    if (pinnedRepos.length === 0 && FEATURED_REPOS.length > 0) {
+      const { data: repos } = await withOctokitFallback((client) =>
+        client.rest.repos.listForUser({
+          username: GITHUB_USERNAME,
+          sort: 'updated',
+          per_page: 100,
+          type: 'owner',
+        })
+      );
+
+      const featuredNameSet = new Set(FEATURED_REPOS.map((name) => name.toLowerCase()));
+      const featuredRepos = sortReposByFeaturedOrder(
+        repos
+          .filter((repo) => !repo.fork && featuredNameSet.has(repo.name.toLowerCase()))
+      );
+
+      if (featuredRepos.length > 0) {
+        const { data: fallbackData } = await withOctokitFallback((client) =>
+          client.rest.search.repos({
+            q: `user:${GITHUB_USERNAME} fork:false`,
+            sort: 'stars',
+            order: 'desc',
+            per_page: 6,
+          })
+        );
+
+        const fallbackRepos = (fallbackData.items || []).filter((repo) => !repo.fork);
+        const transformedRepos = mergeWithFallbackRepos(
+          featuredRepos,
+          fallbackRepos
+        ).map(transformRepo);
+
+        setCachedData(CACHE_KEY, transformedRepos);
+        return transformedRepos;
+      }
+    }
+
+    // If no pinned/featured repos, fall back to top repos by stars
     if (pinnedRepos.length === 0) {
       const { data } = await withOctokitFallback((client) =>
         client.rest.search.repos({
@@ -92,24 +185,7 @@ const fetchGitHubPinned = async () => {
 
       const topStarredRepos = data.items || [];
 
-      const transformedRepos = topStarredRepos.map(repo => ({
-        id: repo.id.toString(),
-        name: repo.name,
-        description: repo.description,
-        url: repo.html_url,
-        homepageUrl: repo.homepage,
-        stargazerCount: repo.stargazers_count,
-        forkCount: repo.forks_count,
-        createdAt: repo.created_at,
-        updatedAt: repo.updated_at,
-        primaryLanguage: repo.language ? {
-          name: repo.language,
-          color: '#000000',
-        } : null,
-        languages: repo.language ? [{ name: repo.language, color: '#000000' }] : [],
-        openGraphImageUrl: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
-        topics: repo.topics || [],
-      }));
+      const transformedRepos = topStarredRepos.map(transformRepo);
 
       setCachedData(CACHE_KEY, transformedRepos);
       return transformedRepos;

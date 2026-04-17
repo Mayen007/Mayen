@@ -157,10 +157,11 @@ Mayen/
 
 ## 📝 Environment Variables
 
-| Variable               | Description                  | Required |
-| ---------------------- | ---------------------------- | -------- |
-| `VITE_GITHUB_TOKEN`    | GitHub Personal Access Token | Yes      |
-| `VITE_GITHUB_USERNAME` | Your GitHub username         | Yes      |
+| Variable                     | Description                                                       | Required |
+| ---------------------------- | ----------------------------------------------------------------- | -------- |
+| `VITE_GITHUB_TOKEN`          | GitHub Personal Access Token                                      | Yes      |
+| `VITE_GITHUB_USERNAME`       | Your GitHub username                                              | Yes      |
+| `VITE_GITHUB_FEATURED_REPOS` | Comma-separated repo names used if pinned repos cannot be fetched | No       |
 
 ## 🚀 Deployment
 
@@ -175,7 +176,6 @@ Mayen/
    ```
 
 2. **Connect to Netlify**
-
    - Go to [Netlify](https://netlify.com) and sign in
    - Click "Add new site" → "Import an existing project"
    - Connect your GitHub account and select the repository
@@ -184,14 +184,12 @@ Mayen/
 3. **Configure Environment Variables**
 
    In Netlify dashboard, go to:
-
    - Site settings → Environment variables
    - Add the following variables:
      - `VITE_GITHUB_TOKEN`: Your GitHub Personal Access Token
      - `VITE_GITHUB_USERNAME`: `Mayen007`
 
 4. **Deploy**
-
    - Click "Deploy site"
    - Your site will be live at `https://your-site-name.netlify.app`
    - Set up a custom domain in Site settings → Domain management

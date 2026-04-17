@@ -49,10 +49,11 @@ Verify these settings (should be auto-detected):
 2. Click **"Add a variable"**
 3. Add the following variables:
 
-   | Key                    | Value                             |
-   | ---------------------- | --------------------------------- |
-   | `VITE_GITHUB_TOKEN`    | Your GitHub Personal Access Token |
-   | `VITE_GITHUB_USERNAME` | `Mayen007`                        |
+   | Key                          | Value                                    |
+   | ---------------------------- | ---------------------------------------- |
+   | `VITE_GITHUB_TOKEN`          | Your GitHub Personal Access Token        |
+   | `VITE_GITHUB_USERNAME`       | `Mayen007`                               |
+   | `VITE_GITHUB_FEATURED_REPOS` | Optional: `repo-one,repo-two,repo-three` |
 
 **Getting your GitHub Token:**
 
