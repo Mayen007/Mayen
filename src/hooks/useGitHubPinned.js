@@ -81,20 +81,18 @@ const fetchGitHubPinned = async () => {
 
     // If no pinned repos, fall back to top repos by stars
     if (pinnedRepos.length === 0) {
-      const { data: repos } = await withOctokitFallback((client) =>
-        client.rest.repos.listForUser({
-          username: GITHUB_USERNAME,
-          sort: 'updated',
+      const { data } = await withOctokitFallback((client) =>
+        client.rest.search.repos({
+          q: `user:${GITHUB_USERNAME} fork:false`,
+          sort: 'stars',
+          order: 'desc',
           per_page: 6,
         })
       );
 
-      const filteredRepos = repos
-        .filter(repo => !repo.fork)
-        .sort((a, b) => b.stargazers_count - a.stargazers_count)
-        .slice(0, 6);
+      const topStarredRepos = data.items || [];
 
-      const transformedRepos = filteredRepos.map(repo => ({
+      const transformedRepos = topStarredRepos.map(repo => ({
         id: repo.id.toString(),
         name: repo.name,
         description: repo.description,

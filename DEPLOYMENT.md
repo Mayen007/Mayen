@@ -158,4 +158,4 @@ After deployment:
 
 **Your portfolio will be live at**: `https://your-site-name.netlify.app`
 
-Good luck! 🚀
+Good luck!
