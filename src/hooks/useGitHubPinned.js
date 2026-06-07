@@ -34,6 +34,7 @@ const transformRepo = (repo) => ({
     color: '#000000',
   } : null,
   languages: repo.language ? [{ name: repo.language, color: '#000000' }] : [],
+  screenshotUrl: `/project-screenshots/${repo.name}.png`,
   openGraphImageUrl: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
   topics: repo.topics || [],
 });
@@ -207,6 +208,7 @@ const fetchGitHubPinned = async () => {
         color: repo.primaryLanguage.color,
       } : null,
       languages: repo.languages?.nodes || [],
+      screenshotUrl: `/project-screenshots/${repo.name}.png`,
       openGraphImageUrl: repo.openGraphImageUrl,
       topics: repo.repositoryTopics?.nodes?.map(t => t.topic.name) || [],
     }));

@@ -1,19 +1,96 @@
 /**
  * Projects Section Component
- * Showcase of top GitHub projects with filtering
+ * Showcase of curated projects with filtering
  */
 
 import { useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { Section } from "./ui/Container";
 import { ProjectCard } from "./ProjectCard";
-import { Loading } from "./ui/Loading";
-import { ErrorMessage } from "./ui/ErrorMessage";
-import { useGitHubPinned } from "../hooks";
+
+const PROJECTS = [
+  {
+    id: "ChangeMakers",
+    name: "ChangeMakers",
+    description:
+      "A community empowerment platform for sustainable development, education, healthcare access, and climate action initiatives.",
+    url: "https://github.com/Mayen007/ChangeMakers",
+    homepageUrl: "https://changemakers.onrender.com",
+    primaryLanguage: { name: "HTML", color: "#e34c26" },
+    stargazerCount: 0,
+    forkCount: 0,
+    topics: ["non-profit", "bootstrap", "community", "donations"],
+    screenshotUrl: "/project-screenshots/changemakers.png",
+  },
+  {
+    id: "read-it-later",
+    name: "read-it-later",
+    description:
+      "A simple, visual way to save and organize articles you want to read. Built with the MERN stack and works in any modern browser.",
+    url: "https://github.com/Mayen007/read-it-later",
+    homepageUrl: "https://readitt.netlify.app/",
+    primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
+    stargazerCount: 2,
+    forkCount: 1,
+    topics: ["nodejs", "chrome-extension", "mongodb", "reactjs"],
+    screenshotUrl: "/project-screenshots/readitt.png",
+  },
+  {
+    id: "mkusssa",
+    name: "mkusssa",
+    description:
+      "A website for MKUSSSA - Nairobi Campus built with HTML, CSS and JavaScript for functionality.",
+    url: "https://github.com/Mayen007/mkusssa",
+    homepageUrl: "https://mkusssa-nairobi.netlify.app/",
+    primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
+    stargazerCount: 0,
+    forkCount: 0,
+    topics: ["carousel", "html-css-javascript", "responsive-web-design"],
+    screenshotUrl: "/project-screenshots/mkusssa.png",
+  },
+  {
+    id: "reviwa",
+    name: "reviwa",
+    description:
+      "Application designed to make urban waste management smarter, more transparent, and community-driven.",
+    url: "https://github.com/Mayen007/reviwa",
+    homepageUrl: "https://reviwa.netlify.app/",
+    primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
+    stargazerCount: 0,
+    forkCount: 0,
+    topics: ["react", "nodejs", "mern-stack", "waste-management"],
+    screenshotUrl: "/project-screenshots/reviwa.png",
+  },
+  {
+    id: "EasyPark",
+    name: "EasyPark",
+    description:
+      "A functioning website for booking parking spaces in the city.",
+    url: "https://github.com/Mayen007/EasyPark",
+    homepageUrl: "https://easypark-lgqj.onrender.com/",
+    primaryLanguage: { name: "HTML", color: "#e34c26" },
+    stargazerCount: 0,
+    forkCount: 0,
+    topics: ["parking", "booking", "responsive-web-design"],
+    screenshotUrl: "/project-screenshots/easypark.png",
+  },
+  {
+    id: "qrgen",
+    name: "qrgen",
+    description:
+      "A professional QR code generator application designed for URLs, WiFi credentials, contact cards, and plain text.",
+    url: "https://github.com/Mayen007/qrgen",
+    homepageUrl: "https://bluewey.netlify.app/",
+    primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
+    stargazerCount: 0,
+    forkCount: 0,
+    topics: ["react-router", "reactjs", "qr-code"],
+    screenshotUrl: "/project-screenshots/qrgen.png",
+  }
+];
 
 export const Projects = () => {
   const [filter, setFilter] = useState("all");
-  const { data: pinnedRepos, isLoading, isError, error } = useGitHubPinned();
 
   // Animation variants
   const containerVariants = {
@@ -36,23 +113,20 @@ export const Projects = () => {
   };
 
   // Get unique languages for filtering
-  const languages = pinnedRepos
-    ? [
-        "all",
-        ...new Set(
-          pinnedRepos
-            .filter((repo) => repo.primaryLanguage)
-            .map((repo) => repo.primaryLanguage.name)
-        ),
-      ]
-    : ["all"];
+  const languages = [
+    "all",
+    ...new Set(
+      PROJECTS.filter((repo) => repo.primaryLanguage).map(
+        (repo) => repo.primaryLanguage.name,
+      ),
+    ),
+  ];
 
   // Filter projects
-  const filteredProjects = pinnedRepos
-    ? filter === "all"
-      ? pinnedRepos
-      : pinnedRepos.filter((repo) => repo.primaryLanguage?.name === filter)
-    : [];
+  const filteredProjects =
+    filter === "all"
+      ? PROJECTS
+      : PROJECTS.filter((repo) => repo.primaryLanguage?.name === filter);
 
   return (
     <Section id="projects" className="bg-gray-50 dark:bg-gray-800/50">
@@ -77,107 +151,75 @@ export const Projects = () => {
         </Motion.div>
 
         {/* Filter Buttons */}
-        {!isLoading && !isError && (
-          <Motion.div
-            variants={headingVariants}
-            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
-          >
-            {languages.map((lang) => (
-              <Motion.button
-                key={lang}
-                onClick={() => setFilter(lang)}
-                className={`px-3 py-2 sm:px-4 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
-                  filter === lang
-                    ? "bg-primary-500 text-white shadow-lg shadow-primary-500/30"
-                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {lang === "all" ? "All Projects" : lang}
-              </Motion.button>
-            ))}
-          </Motion.div>
-        )}
-
-        {/* Loading State */}
-        {isLoading && (
-          <div className="flex justify-center py-20">
-            <Loading />
-          </div>
-        )}
-
-        {/* Error State */}
-        {isError && (
-          <div className="flex justify-center py-20">
-            <ErrorMessage
-              message={error?.message || "Failed to load projects"}
-            />
-          </div>
-        )}
-
-        {/* Projects Grid */}
-        {!isLoading && !isError && (
-          <>
-            {filteredProjects.length > 0 ? (
-              <Motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto"
-                variants={containerVariants}
-              >
-                {filteredProjects.map((project, index) => (
-                  <ProjectCard
-                    key={project.id}
-                    project={project}
-                    index={index}
-                  />
-                ))}
-              </Motion.div>
-            ) : (
-              <Motion.div
-                variants={headingVariants}
-                className="text-center py-20"
-              >
-                <p className="text-gray-600 dark:text-gray-400 text-lg">
-                  No projects found for this filter.
-                </p>
-              </Motion.div>
-            )}
-          </>
-        )}
-
-        {/* View More on GitHub */}
-        {!isLoading && !isError && pinnedRepos && pinnedRepos.length > 0 && (
-          <Motion.div
-            variants={headingVariants}
-            className="text-center mt-8 sm:mt-12 px-4"
-          >
-            <Motion.a
-              href="https://github.com/Mayen007?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium text-xs sm:text-sm md:text-base"
+        <Motion.div
+          variants={headingVariants}
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
+        >
+          {languages.map((lang) => (
+            <Motion.button
+              key={lang}
+              onClick={() => setFilter(lang)}
+              className={`px-3 py-2 sm:px-4 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
+                filter === lang
+                  ? "bg-primary-500 text-white shadow-lg shadow-primary-500/30"
+                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700"
+              }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="whitespace-nowrap">
-                View All Projects on GitHub
-              </span>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </Motion.a>
+              {lang === "all" ? "All Projects" : lang}
+            </Motion.button>
+          ))}
+        </Motion.div>
+
+        {/* Projects Grid */}
+        {filteredProjects.length > 0 ? (
+          <Motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto"
+            variants={containerVariants}
+          >
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </Motion.div>
+        ) : (
+          <Motion.div variants={headingVariants} className="text-center py-20">
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
+              No projects found for this filter.
+            </p>
           </Motion.div>
         )}
+
+        <Motion.div
+          variants={headingVariants}
+          className="text-center mt-8 sm:mt-12 px-4"
+        >
+          <Motion.a
+            href="https://github.com/Mayen007?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium text-xs sm:text-sm md:text-base"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="whitespace-nowrap">
+              View All Projects on GitHub
+            </span>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </Motion.a>
+        </Motion.div>
       </Motion.div>
     </Section>
   );

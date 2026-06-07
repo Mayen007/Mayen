@@ -7,25 +7,23 @@ import { useState, useEffect } from "react";
 import { motion as Motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiStar, FiGitBranch } from "react-icons/fi";
 
-const USE_OPEN_GRAPH_IMAGES =
-  import.meta.env.VITE_GITHUB_USE_OPEN_GRAPH_IMAGES === "true";
-
 export const ProjectCard = ({ project, index }) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageError, setImageError] = useState(false);
 
-  // Lazy load image with delay to prevent rate limiting
+  // Lazy load image with delay to avoid loading every card at once.
   useEffect(() => {
-    if (!USE_OPEN_GRAPH_IMAGES || !project.openGraphImageUrl) return;
+    const preferredImage = project.screenshotUrl;
+    if (!preferredImage) return;
 
     // Stagger image loading: 500ms delay per card
     const delay = index * 500;
     const timer = setTimeout(() => {
-      setImageSrc(project.openGraphImageUrl);
+      setImageSrc(preferredImage);
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [project.openGraphImageUrl, index]);
+  }, [project.screenshotUrl, index]);
 
   // Animation variants
   const cardVariants = {
@@ -57,7 +55,9 @@ export const ProjectCard = ({ project, index }) => {
             alt={project.name}
             className="w-full h-full object-cover group-hover:scale-100 transition-transform duration-500"
             loading="lazy"
-            onError={() => setImageError(true)}
+            onError={() => {
+              setImageError(true);
+            }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -154,7 +154,7 @@ export const ProjectCard = ({ project, index }) => {
       </div>
 
       {/* Hover effect overlay */}
-      <div className="absolute inset-0 border-2 border-primary-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 border-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </Motion.article>
   );
 };
