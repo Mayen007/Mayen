@@ -16,10 +16,17 @@ const PROJECTS = [
       "A community empowerment platform for sustainable development, education, healthcare access, and climate action initiatives.",
     url: "https://github.com/Mayen007/ChangeMakers",
     homepageUrl: "https://changemakers.onrender.com",
-    primaryLanguage: { name: "HTML", color: "#e34c26" },
+    primaryLanguage: { name: "HTML", color: "#E44D26" },
     stargazerCount: 0,
     forkCount: 0,
-    topics: ["non-profit", "bootstrap", "community", "donations"],
+    topics: [
+      "community",
+      "non-profit-organisation",
+      "NGO",
+      "beginner-friendly",
+      "web-development",
+      "web-design",
+    ],
     screenshotUrl: "/project-screenshots/changemakers.png",
   },
   {
@@ -45,7 +52,13 @@ const PROJECTS = [
     primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
     stargazerCount: 0,
     forkCount: 0,
-    topics: ["carousel", "html-css-javascript", "responsive-web-design"],
+    topics: [
+      "student-association",
+      "intermediate-project",
+      "modern-ui",
+      "html-css-javascript",
+      "responsive-web-design",
+    ],
     screenshotUrl: "/project-screenshots/mkusssa.png",
   },
   {
@@ -58,7 +71,13 @@ const PROJECTS = [
     primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
     stargazerCount: 0,
     forkCount: 0,
-    topics: ["react", "nodejs", "mern-stack", "waste-management"],
+    topics: [
+      "waste-management",
+      "sustainability",
+      "react",
+      "nodejs",
+      "mern-stack",
+    ],
     screenshotUrl: "/project-screenshots/reviwa.png",
   },
   {
@@ -68,7 +87,7 @@ const PROJECTS = [
       "A functioning website for booking parking spaces in the city.",
     url: "https://github.com/Mayen007/EasyPark",
     homepageUrl: "https://easypark-lgqj.onrender.com/",
-    primaryLanguage: { name: "HTML", color: "#e34c26" },
+    primaryLanguage: { name: "HTML", color: "#E44D26" },
     stargazerCount: 0,
     forkCount: 0,
     topics: ["parking", "booking", "responsive-web-design"],
@@ -86,7 +105,7 @@ const PROJECTS = [
     forkCount: 0,
     topics: ["react-router", "reactjs", "qr-code"],
     screenshotUrl: "/project-screenshots/qrgen.png",
-  }
+  },
 ];
 
 export const Projects = () => {
