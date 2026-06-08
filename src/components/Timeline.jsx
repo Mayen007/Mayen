@@ -17,7 +17,7 @@ export const Timeline = () => {
         "Specializing in software development, database management, and systems design.",
       icon: FiBook,
       color: "from-blue-500 to-cyan-500",
-      status: "upcoming",
+      status: "current",
     },
     {
       year: "2025",
@@ -27,7 +27,7 @@ export const Timeline = () => {
         "Specialized training in MongoDB, Express.js, React, and Node.js. Building production-ready full-stack applications.",
       icon: FiAward,
       color: "from-purple-500 to-pink-500",
-      status: "current",
+      status: "completed",
     },
     {
       year: "2023",
@@ -105,14 +105,14 @@ export const Timeline = () => {
                   <Motion.div
                     key={index}
                     variants={itemVariants}
-                    className={`relative flex flex-col md:flex-row gap-8 ${
+                    className={`relative flex flex-col md:flex-row gap-8 md:gap-12 ${
                       isLeft ? "md:flex-row-reverse" : ""
                     }`}
                   >
                     {/* Content Card */}
                     <div
                       className={`flex-1 ml-20 md:ml-0 ${
-                        isLeft ? "md:text-right md:pr-8" : "md:pl-8"
+                        isLeft ? "md:text-right md:pr-12" : "md:pl-12"
                       }`}
                     >
                       <Motion.div

@@ -20,43 +20,11 @@ const authenticatedOctokit = new Octokit({
 });
 
 let canUseAuthenticatedRequests = hasGitHubToken;
-let authValidationPromise = null;
 
-// Initialize Octokit client with authentication
-export const octokit = hasGitHubToken ? authenticatedOctokit : unauthenticatedOctokit;
+// Use the public client for REST requests so an invalid token does not break public API calls.
+export const octokit = unauthenticatedOctokit;
 
 export const hasUsableGitHubAuth = () => canUseAuthenticatedRequests;
-
-/**
- * Validate auth once and share the result across concurrent requests.
- */
-const validateAuthenticatedClient = async () => {
-  if (!canUseAuthenticatedRequests) {
-    return false;
-  }
-
-  if (authValidationPromise) {
-    return authValidationPromise;
-  }
-
-  authValidationPromise = (async () => {
-    try {
-      await authenticatedOctokit.rest.users.getAuthenticated();
-      return true;
-    } catch (error) {
-      if (isGitHubAuthError(error)) {
-        canUseAuthenticatedRequests = false;
-        return false;
-      }
-
-      throw error;
-    } finally {
-      authValidationPromise = null;
-    }
-  })();
-
-  return authValidationPromise;
-};
 
 /**
  * Whether an error is caused by missing/invalid GitHub credentials
@@ -67,26 +35,10 @@ export const isGitHubAuthError = (error) => {
 };
 
 /**
- * Run a REST request and automatically retry without auth if token is invalid
+ * Run a REST request against the public client.
  */
 export const withOctokitFallback = async (operation) => {
-  const shouldUseAuthenticatedClient = canUseAuthenticatedRequests
-    ? await validateAuthenticatedClient()
-    : false;
-  const primaryClient = shouldUseAuthenticatedClient
-    ? authenticatedOctokit
-    : unauthenticatedOctokit;
-
-  try {
-    return await operation(primaryClient);
-  } catch (error) {
-    if (!canUseAuthenticatedRequests || !isGitHubAuthError(error)) {
-      throw error;
-    }
-
-    canUseAuthenticatedRequests = false;
-    return operation(unauthenticatedOctokit);
-  }
+  return operation(unauthenticatedOctokit);
 };
 
 /**
@@ -94,11 +46,6 @@ export const withOctokitFallback = async (operation) => {
  */
 export const withGraphQLFallback = async (operation, fallbackValue = null) => {
   if (!canUseAuthenticatedRequests) {
-    return fallbackValue;
-  }
-
-  const shouldUseAuthenticatedClient = await validateAuthenticatedClient();
-  if (!shouldUseAuthenticatedClient) {
     return fallbackValue;
   }
 

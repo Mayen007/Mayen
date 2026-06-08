@@ -180,7 +180,7 @@ export const Projects = () => {
               onClick={() => setFilter(lang)}
               className={`px-3 py-2 sm:px-4 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
                 filter === lang
-                  ? "bg-primary-500 text-white shadow-lg shadow-primary-500/30"
+                  ? "bg-gradient text-white shadow-lg shadow-primary-500/30"
                   : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700"
               }`}
               whileHover={{ scale: 1.05 }}

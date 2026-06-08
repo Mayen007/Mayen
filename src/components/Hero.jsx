@@ -154,7 +154,7 @@ export const Hero = () => {
           {user && (
             <Motion.div
               variants={itemVariants}
-              className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-4"
+              className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-3 sm:px-2"
             >
               <div className="text-center min-w-[80px] sm:min-w-[90px]">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
@@ -196,15 +196,15 @@ export const Hero = () => {
           {/* CTA Buttons */}
           <Motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 px-4"
+            className="flex justify-center gap-3 sm:gap-4 mb-12 px-4"
           >
-            <Button onClick={() => scrollToSection("#projects")} size="lg">
+            <Button onClick={() => scrollToSection("#projects")} size="md">
               View Projects
             </Button>
             <Button
               onClick={() => scrollToSection("#contact")}
               variant="secondary"
-              size="lg"
+              size="md"
             >
               Get in Touch
             </Button>

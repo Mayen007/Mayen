@@ -48,12 +48,12 @@ export const ProjectCard = ({ project, index }) => {
       className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
     >
       {/* Project Image/Thumbnail */}
-      <div className="relative h-48 sm:h-56 md:h-48 bg-gradient-to-br from-primary-500 to-purple-600 overflow-hidden">
+      <div className="relative h-48 sm:h-56 md:h-48 overflow-hidden">
         {imageSrc && !imageError ? (
           <img
             src={imageSrc}
             alt={project.name}
-            className="w-full h-full object-cover group-hover:scale-100 transition-transform duration-500"
+            className="w-full h-full object-fill group-hover:scale-100 transition-transform duration-500"
             loading="lazy"
             onError={() => {
               setImageError(true);
@@ -142,7 +142,7 @@ export const ProjectCard = ({ project, index }) => {
               href={project.homepageUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium text-sm"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-gradient text-white rounded-lg hover:bg-primary-600 transition-colors font-medium text-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

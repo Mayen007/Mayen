@@ -44,6 +44,9 @@
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
   }
+  .bg-gradient{
+    @apply bg-gradient-to-r from-primary-500 to-purple-600;
+  }
 }
 
 /* Custom Scrollbar */

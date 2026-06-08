@@ -60,9 +60,6 @@ export const Footer = () => {
             <p className="text-sm">
               &copy; {currentYear} Mayen Akech. All rights reserved.
             </p>
-            <p className="text-xs mt-2">
-              Built with React, Tailwind CSS & Framer Motion
-            </p>
           </div>
         </div>
       </div>
