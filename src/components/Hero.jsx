@@ -4,8 +4,7 @@
  */
 
 import { motion as Motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown } from "react-icons/fi";
-import { SiFreecodecamp } from "react-icons/si";
+import { FiArrowDown } from "react-icons/fi";
 import { Button } from "./ui/Button";
 import { useGitHubUser } from "../hooks";
 
@@ -44,30 +43,6 @@ export const Hero = () => {
     }
   };
 
-  // Social links
-  const socialLinks = [
-    {
-      name: "GitHub",
-      href: "https://github.com/Mayen007",
-      icon: FiGithub,
-    },
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/mayenakech",
-      icon: FiLinkedin,
-    },
-    {
-      name: "FreeCodeCamp",
-      href: "https://freecodecamp.org/Mayen007",
-      icon: SiFreecodecamp,
-    },
-    {
-      name: "Email",
-      href: "mailto:mayenakech9@gmail.com",
-      icon: FiMail,
-    },
-  ];
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
       {/* Animated background elements */}
@@ -100,7 +75,7 @@ export const Hero = () => {
 
       {/* Content */}
       <Motion.div
-        className="container-custom relative z-10 py-20 w-full"
+        className="container-custom relative z-10 py-16 md:py-20 w-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -145,7 +120,7 @@ export const Hero = () => {
           {/* Bio */}
           <Motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto px-4"
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto px-4"
           >
             {user?.bio || "Building Solutions, One Bug Fix at a Time."}
           </Motion.p>
@@ -154,7 +129,7 @@ export const Hero = () => {
           {user && (
             <Motion.div
               variants={itemVariants}
-              className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-12 px-3 sm:px-2"
+              className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2"
             >
               <div className="text-center min-w-[80px] sm:min-w-[90px]">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
@@ -196,7 +171,7 @@ export const Hero = () => {
           {/* CTA Buttons */}
           <Motion.div
             variants={itemVariants}
-            className="flex justify-center gap-3 sm:gap-4 mb-12 px-4"
+            className="flex justify-center gap-3 sm:gap-4 mb-2 px-4"
           >
             <Button onClick={() => scrollToSection("#projects")} size="md">
               View Projects
@@ -210,34 +185,10 @@ export const Hero = () => {
             </Button>
           </Motion.div>
 
-          {/* Social Links */}
-          <Motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4"
-          >
-            {socialLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <Motion.a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={link.name}
-                >
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300" />
-                </Motion.a>
-              );
-            })}
-          </Motion.div>
-
           {/* Scroll indicator */}
           <Motion.div
             variants={itemVariants}
-            className="mt-16 flex justify-center"
+            className="mt-5 mb-0 flex justify-center"
           >
             <Motion.button
               onClick={() => scrollToSection("#about")}

@@ -21,14 +21,14 @@ export const Footer = () => {
       icon: FiLinkedin,
     },
     {
-      name: "Email",
-      href: "mailto:mayenakech9@gmail.com",
-      icon: FiMail,
-    },
-    {
       name: "FreeCodeCamp",
       href: "https://freecodecamp.org/Mayen007",
       icon: SiFreecodecamp,
+    },
+    {
+      name: "Email",
+      href: "mailto:mayenakech9@gmail.com",
+      icon: FiMail,
     },
   ];
 

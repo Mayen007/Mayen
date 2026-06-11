@@ -16,7 +16,7 @@ import {
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  SiPostgresql,
+  SiMysql,
   SiGit,
   SiGithub,
   SiVercel,
@@ -55,7 +55,7 @@ export const Skills = () => {
         { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
         { name: "Express", icon: SiExpress, color: "#000000" },
         { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+        { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       ],
     },
     {
