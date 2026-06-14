@@ -222,7 +222,7 @@ export const About = () => {
             Download Resume
           </Motion.a>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
-            PDF format • Updated November 2025
+            PDF format • Updated March 2026
           </p>
         </Motion.div>
       </Motion.div>

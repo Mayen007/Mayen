@@ -84,22 +84,8 @@ export const Activity = () => {
             />
           </div>
 
-          {/* Calendar Legend/Info */}
           <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-gray-600 dark:text-gray-400">
-              <div className="flex items-center gap-2">
-                <span>Less</span>
-                <div className="flex gap-1">
-                  {calendarTheme[isDark ? "dark" : "light"].map((color, i) => (
-                    <div
-                      key={i}
-                      className="w-3 h-3 rounded-sm"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
-                </div>
-                <span>More</span>
-              </div>
+            <div className="flex justify-end text-sm text-gray-600 dark:text-gray-400">
               <a
                 href={`https://github.com/${GITHUB_USERNAME}`}
                 target="_blank"

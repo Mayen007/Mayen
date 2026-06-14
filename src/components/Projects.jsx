@@ -44,7 +44,7 @@ const PROJECTS = [
   },
   {
     id: "mkusssa",
-    name: "mkusssa",
+    name: "MKUSSSA - Nairobi Campus",
     description:
       "A website for MKUSSSA - Nairobi Campus built with HTML, CSS and JavaScript for functionality.",
     url: "https://github.com/Mayen007/mkusssa",
