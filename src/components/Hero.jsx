@@ -48,7 +48,7 @@ export const Hero = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/20 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 90, 0],
@@ -60,7 +60,7 @@ export const Hero = () => {
           }}
         />
         <Motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [90, 0, 90],
@@ -69,6 +69,15 @@ export const Hero = () => {
             duration: 20,
             repeat: Infinity,
             ease: "linear",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.14] dark:opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(100, 116, 139, 0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(100, 116, 139, 0.6) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            backgroundPosition: "center",
           }}
         />
       </div>
@@ -109,14 +118,6 @@ export const Hero = () => {
             </span>
           </Motion.h1>
 
-          {/* Tagline */}
-          {/* <Motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-4 font-medium"
-          >
-            Frontend Developer
-          </Motion.p> */}
-
           {/* Bio */}
           <Motion.p
             variants={itemVariants}
@@ -124,6 +125,16 @@ export const Hero = () => {
           >
             {user?.bio || "Crafting interfaces people actually enjoy using."}
           </Motion.p>
+
+          {/* Loading state */}
+          {isLoading && (
+            <Motion.div variants={itemVariants} className="mb-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-primary-500" />
+              <p className="text-gray-600 dark:text-gray-400 mt-4">
+                Loading GitHub stats...
+              </p>
+            </Motion.div>
+          )}
 
           {/* Stats */}
           {user && (
@@ -158,16 +169,6 @@ export const Hero = () => {
             </Motion.div>
           )}
 
-          {/* Loading state */}
-          {isLoading && (
-            <Motion.div variants={itemVariants} className="mb-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-primary-500" />
-              <p className="text-gray-600 dark:text-gray-400 mt-4">
-                Loading GitHub stats...
-              </p>
-            </Motion.div>
-          )}
-
           {/* CTA Buttons */}
           <Motion.div
             variants={itemVariants}
@@ -198,6 +199,7 @@ export const Hero = () => {
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut",
+                delay: 2,
               }}
             >
               <span className="text-sm mb-2">Scroll to explore</span>

@@ -142,7 +142,7 @@ export const ProjectCard = ({ project, index }) => {
               href={project.homepageUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-gradient text-white rounded-lg hover:bg-primary-600 transition-colors font-medium text-sm"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-gradient-to-r from-primary-500 to-purple-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium text-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
