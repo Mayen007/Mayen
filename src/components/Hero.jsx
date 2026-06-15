@@ -7,6 +7,7 @@ import { motion as Motion } from "framer-motion";
 import { FiArrowDown } from "react-icons/fi";
 import { Button } from "./ui/Button";
 import { useGitHubUser } from "../hooks";
+import { TypeAnimation } from "react-type-animation";
 
 /**
  * Hero component with animated introduction and live GitHub stats
@@ -71,13 +72,23 @@ export const Hero = () => {
             ease: "linear",
           }}
         />
+        {/* Light mode grid */}
         <div
-          className="absolute inset-0 opacity-[0.14] dark:opacity-[0.08]"
+          className="absolute inset-0 dark:hidden"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(100, 116, 139, 0.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(100, 116, 139, 0.6) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
-            backgroundPosition: "center",
+          }}
+        />
+
+        {/* Dark mode grid */}
+        <div
+          className="absolute inset-0 hidden dark:block"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
           }}
         />
       </div>
@@ -113,9 +124,19 @@ export const Hero = () => {
             variants={itemVariants}
             className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
           >
-            <span className="text-gradient break-words">
-              {user?.name || "Mayen Akech"}
-            </span>
+            {user?.name ? (
+              <TypeAnimation
+                sequence={[user.name, 1000]}
+                wrapper="span"
+                speed={10}
+                className="text-gradient"
+                cursor={true}
+              />
+            ) : isLoading ? (
+              <span className="text-gradient">...</span>
+            ) : (
+              <span className="text-gradient">Mayen Akech</span>
+            )}
           </Motion.h1>
 
           {/* Bio */}
@@ -125,48 +146,43 @@ export const Hero = () => {
           >
             {user?.bio || "Crafting interfaces people actually enjoy using."}
           </Motion.p>
-
-          {/* Loading state */}
-          {isLoading && (
-            <Motion.div variants={itemVariants} className="mb-12">
+          {/* Stats / Loading */}
+          {isLoading ? (
+            <Motion.div variants={itemVariants} className="mb-8">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-primary-500" />
-              <p className="text-gray-600 dark:text-gray-400 mt-4">
-                Loading GitHub stats...
-              </p>
             </Motion.div>
-          )}
-
-          {/* Stats */}
-          {user && (
-            <Motion.div
-              variants={itemVariants}
-              className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2"
-            >
-              <div className="text-center min-w-[80px] sm:min-w-[90px]">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
-                  {user.public_repos}
+          ) : (
+            user && (
+              <Motion.div
+                variants={itemVariants}
+                className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2"
+              >
+                <div className="text-center min-w-[80px] sm:min-w-[90px]">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                    {user.public_repos}
+                  </div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
+                    Repositories
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
-                  Repositories
+                <div className="text-center min-w-[80px] sm:min-w-[90px]">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                    {user.followers}
+                  </div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
+                    Followers
+                  </div>
                 </div>
-              </div>
-              <div className="text-center min-w-[80px] sm:min-w-[90px]">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
-                  {user.followers}
+                <div className="text-center min-w-[80px] sm:min-w-[90px]">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                    {user.following}
+                  </div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
+                    Following
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
-                  Followers
-                </div>
-              </div>
-              <div className="text-center min-w-[80px] sm:min-w-[90px]">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
-                  {user.following}
-                </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
-                  Following
-                </div>
-              </div>
-            </Motion.div>
+              </Motion.div>
+            )
           )}
 
           {/* CTA Buttons */}
