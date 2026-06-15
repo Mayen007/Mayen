@@ -60,27 +60,22 @@ export const About = () => {
               My Story
             </h3>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              I'm a passionate Full-Stack Developer based in Nairobi, Kenya,
-              currently pursuing a BSc in Information Technology at Mount Kenya
-              University (graduating 2027). I love crafting elegant solutions to
-              complex problems, with a keen eye for clean, intuitive user
-              interfaces.
+              I'm a Full-Stack Developer based in Nairobi, Kenya, working toward
+              a BSc in Information Technology at Mount Kenya University (2027).
+              My focus is frontend engineering — building interfaces that are
+              fast, accessible, and genuinely pleasant to use.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              I specialize in the MERN stack (MongoDB, Express.js, React,
-              Node.js), building full-stack applications from the ground up.
-              From designing scalable APIs and robust backend architectures to
-              creating responsive, modern frontends, I enjoy working across the
-              entire development stack. I'm driven by the joy of continuous
-              learning and solving real-world challenges with clean,
-              maintainable code.
+              I work primarily in React, with a strong handle on the backend
+              systems that power it — REST APIs, MongoDB, and Node.js. Recent
+              work includes a community platform for MKUSSSA and a developer
+              job-tracking system tailored for the Kenyan market.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              My career direction is focused on mastering full-stack development
-              and systems design, with particular interest in backend
-              engineering and cloud architectures. I believe great software is
-              built on clean code, thoughtful design, and a deep understanding
-              of user needs.
+              I care about the details — component architecture, UI consistency,
+              and interfaces built around how people actually use them.
+              Currently deepening my knowledge of performance optimization and
+              modern design systems.
             </p>
           </Motion.div>
 

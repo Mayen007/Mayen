@@ -77,7 +77,7 @@ export const Header = () => {
           : "bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-800/50 md:bg-transparent md:dark:bg-transparent md:backdrop-blur-none md:shadow-none md:border-b-0"
       }`}
     >
-      <nav className="container-custom py-4 max-w-full">
+      <nav className="container-custom py-2 md:py-4 max-w-full">
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <Motion.a

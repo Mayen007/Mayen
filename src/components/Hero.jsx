@@ -95,7 +95,7 @@ export const Hero = () => {
           {/* Greeting */}
           <Motion.div variants={itemVariants}>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2">
-              Hello, I'm
+              Hey, I'm
             </p>
           </Motion.div>
 
@@ -110,19 +110,19 @@ export const Hero = () => {
           </Motion.h1>
 
           {/* Tagline */}
-          <Motion.p
+          {/* <Motion.p
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-4 font-medium"
           >
-            Full-Stack Developer
-          </Motion.p>
+            Frontend Developer
+          </Motion.p> */}
 
           {/* Bio */}
           <Motion.p
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto px-4"
           >
-            {user?.bio || "Building Solutions, One Bug Fix at a Time."}
+            {user?.bio || "Crafting interfaces people actually enjoy using."}
           </Motion.p>
 
           {/* Stats */}
@@ -171,7 +171,7 @@ export const Hero = () => {
           {/* CTA Buttons */}
           <Motion.div
             variants={itemVariants}
-            className="flex justify-center gap-3 sm:gap-4 mb-2 px-4"
+            className="flex justify-center gap-3 sm:gap-4 mt-4 mb-3 px-4"
           >
             <Button onClick={() => scrollToSection("#projects")} size="md">
               View Projects
@@ -188,7 +188,7 @@ export const Hero = () => {
           {/* Scroll indicator */}
           <Motion.div
             variants={itemVariants}
-            className="mt-5 mb-0 flex justify-center"
+            className="mt-7 mb-0 flex justify-center"
           >
             <Motion.button
               onClick={() => scrollToSection("#about")}
@@ -201,7 +201,7 @@ export const Hero = () => {
               }}
             >
               <span className="text-sm mb-2">Scroll to explore</span>
-              <FiArrowDown className="w-6 h-6" />
+              <FiArrowDown className="w-6 h-7" />
             </Motion.button>
           </Motion.div>
         </div>

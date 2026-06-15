@@ -97,40 +97,6 @@ export const Activity = () => {
             </div>
           </div>
         </Motion.div>
-
-        {/* Call to Action */}
-        <Motion.div
-          variants={itemVariants}
-          className="text-center mt-8 sm:mt-12 bg-gradient-to-r from-primary-500 to-purple-600 rounded-xl p-6 sm:p-8 lg:p-12 text-white"
-        >
-          <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
-            Let's Collaborate!
-          </h3>
-          <p className="text-base sm:text-lg mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto">
-            I'm always open to new opportunities and interesting projects. Feel
-            free to reach out if you'd like to work together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Motion.a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary-600 rounded-lg hover:bg-gray-100 transition-colors font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Get in Touch</span>
-            </Motion.a>
-            <Motion.a
-              href={`https://github.com/${GITHUB_USERNAME}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-colors font-medium border border-white/20"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Follow on GitHub</span>
-            </Motion.a>
-          </div>
-        </Motion.div>
       </Motion.div>
     </Section>
   );

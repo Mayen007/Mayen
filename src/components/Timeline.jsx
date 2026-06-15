@@ -30,6 +30,16 @@ export const Timeline = () => {
       status: "completed",
     },
     {
+      year: "2024",
+      title: "Technical University of Munich",
+      subtitle: "Digital Product Development — Coursera",
+      description:
+        "Covered product development strategy, AWS cloud infrastructure, Generative AI, MLOps, and Lean methodologies applied to full-stack projects.",
+      icon: FiAward,
+      color: "from-blue-500 to-cyan-500",
+      status: "completed",
+    },
+    {
       year: "2023",
       title: "Backend Development",
       subtitle: "API Design & Database Architecture",
@@ -90,7 +100,7 @@ export const Timeline = () => {
         </Motion.div>
 
         {/* Timeline */}
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4">
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-purple-500 to-pink-500 transform md:-translate-x-1/2" />
@@ -111,7 +121,7 @@ export const Timeline = () => {
                   >
                     {/* Content Card */}
                     <div
-                      className={`flex-1 ml-20 md:ml-0 ${
+                      className={`flex-1 ml-16 md:ml-0 ${
                         isLeft ? "md:text-right md:pr-12" : "md:pl-12"
                       }`}
                     >
