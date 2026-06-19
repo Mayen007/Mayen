@@ -1,240 +1,184 @@
-# Mayen Akech - Portfolio
+# Mayen Akech — Portfolio
 
-> Full-Stack Developer | Building Solutions, One Bug Fix at a Time 🚀
+> Full-Stack Developer with a Frontend focus | React & MERN Stack
 
-A modern, responsive portfolio website showcasing my projects, skills, and experience. Built with React, Tailwind CSS, and integrated with the GitHub API for real-time project data.
+A modern, responsive portfolio site showcasing my projects, skills, and experience. Built with React and Tailwind CSS, with live GitHub data pulled in via the GitHub API.
 
-## ✨ Features
+**Live site:** [makech.netlify.app](https://makech.netlify.app)
 
-- 🌓 **Dark/Light Mode** - Seamless theme switching with localStorage persistence
-- 🔄 **Real-time GitHub Integration** - Automatically fetches and displays projects from GitHub API
-- 🎨 **Modern UI/UX** - Glass-morphism effects, smooth animations with Framer Motion
-- 📱 **Fully Responsive** - Optimized for all devices and screen sizes
-- ⚡ **Performance Optimized** - React Query caching, lazy loading, code splitting
-- 🎯 **SEO Ready** - Meta tags, Open Graph, and semantic HTML
-- 📊 **GitHub Stats** - Live contribution calendar and activity feed
+## Features
 
-## 🛠️ Tech Stack
+- **Dark/light mode** — theme toggle with localStorage persistence and system preference detection
+- **Live GitHub integration** — pulls repositories, pinned projects, and contribution activity directly from the GitHub API
+- **Smooth animations** — Framer Motion throughout, including an animated hero and scroll-triggered transitions
+- **Fully responsive** — built mobile-first, tested across breakpoints
+- **Performance-minded** — React Query caching, lazy loading, code splitting
+- **SEO-ready** — meta tags, Open Graph, and semantic HTML
 
-### Frontend
+## Tech stack
 
-- **React 19** - Latest React features and hooks
-- **Vite** - Lightning-fast build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Smooth animations and transitions
-- **React Router** - Client-side routing
+**Frontend**
+- React 19
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Router
 
-### APIs & Data
+**APIs & data**
+- GitHub REST API
+- GitHub GraphQL API (pinned repos, contributions)
+- Octokit
+- React Query
 
-- **GitHub REST API** - Repository and user data
-- **GitHub GraphQL API** - Pinned repositories and contributions
-- **Octokit** - Official GitHub API client
-- **React Query** - Data fetching, caching, and state management
+**Other libraries**
+- React Markdown
+- React Icons (Feather Icons, Simple Icons)
+- React GitHub Calendar
+- React Type Animation
 
-### Additional Libraries
-
-- **React Markdown** - Rendering blog posts and documentation
-- **React Icons** - Icon library (Feather Icons, Simple Icons)
-- **React GitHub Calendar** - Contribution graph visualization
-
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
 - Node.js 18+ and npm
-- GitHub Personal Access Token (for API access)
+- A GitHub Personal Access Token (for API access)
 
 ### Installation
 
-1. **Clone the repository**
+```bash
+git clone https://github.com/Mayen007/Mayen.git
+cd Mayen
+npm install
+```
 
-   ```bash
-   git clone https://github.com/Mayen007/Mayen.git
-   cd Mayen
-   ```
+Create a `.env` file in the root directory:
 
-2. **Install dependencies**
+```env
+VITE_GITHUB_TOKEN=your_github_personal_access_token_here
+VITE_GITHUB_USERNAME=your_github_username_here
+```
 
-   ```bash
-   npm install
-   ```
+Generate a token at [github.com/settings/tokens](https://github.com/settings/tokens).
 
-3. **Set up environment variables**
+Start the dev server:
 
-   Create a `.env` file in the root directory:
+```bash
+npm run dev
+```
 
-   ```env
-   VITE_GITHUB_TOKEN=your_github_personal_access_token_here
-   VITE_GITHUB_USERNAME=your_github_username_here
-   ```
+Then open `http://localhost:5173`.
 
-   Get your GitHub token at: https://github.com/settings/tokens
-
-4. **Start the development server**
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser**
-
-   Navigate to `http://localhost:5173`
-
-### Build for Production
+### Build for production
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## 📁 Project Structure
+## Project structure
 
-```
+````
 Mayen/
 ├── src/
 │   ├── components/
 │   │   ├── layout/          # Header, Footer
-│   │   └── ui/              # Reusable UI components
-│   ├── context/             # React Context (Theme)
-│   ├── hooks/               # Custom React hooks
-│   ├── lib/                 # GitHub API, React Query config
-│   ├── utils/               # Helper functions, cache
-│   ├── App.jsx              # Main application component
-│   └── main.jsx             # Application entry point
-├── public/                  # Static assets
-├── .env                     # Environment variables (gitignored)
-├── .env.example             # Example environment variables
-├── tailwind.config.js       # Tailwind CSS configuration
-├── vite.config.js           # Vite configuration
-└── package.json             # Dependencies and scripts
-```
+│   │   └── ui/               # Reusable UI components
+│   ├── context/              # React Context (Theme)
+│   ├── hooks/                # Custom React hooks
+│   ├── lib/                  # GitHub API client, React Query config
+│   ├── utils/                # Helpers, caching logic
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── .env.example
+├── tailwind.config.js
+├── vite.config.js
+└── package.json
+````
 
-## 🎨 Component Architecture
+## Component architecture
 
-### Reusable UI Components
+**UI components**
+- `Button` — primary, secondary, and ghost variants
+- `Card` — glass-morphism container with built-in animation
+- `Loading` — spinner and skeleton loaders
+- `ErrorMessage` — user-facing error display
+- `Container` / `Section` — consistent layout wrappers
 
-- **Button** - Multiple variants (primary, secondary, ghost)
-- **Card** - Glass-morphism container with animations
-- **Loading** - Spinner and skeleton loaders
-- **ErrorMessage** - User-friendly error displays
-- **Container/Section** - Consistent layout wrappers
+**Layout components**
+- `Header` — responsive nav with theme toggle and active-link tracking
+- `Footer` — social links and copyright
 
-### Layout Components
+**Page sections**
+- `Hero` — animated intro with typing effect and live GitHub stats
+- `About` — bio and background
+- `Skills` — tech stack, grouped by category
+- `Projects` — dynamic project showcase pulled from GitHub
+- `Timeline` — education and milestones
+- `GitHub Activity` — contribution calendar
+- `Contact` — contact details and social links
 
-- **Header** - Responsive navigation with theme toggle
-- **Footer** - Social links and copyright
+## Key features in detail
 
-### Features (In Progress)
+**GitHub API integration**
+- Fetches profile, repositories, and pinned projects
+- Displays live star/fork counts and primary language per repo
+- Renders a contribution calendar and recent activity feed
+- Handles API rate limits and fetch errors gracefully
 
-- **Hero** - Animated introduction with GitHub stats
-- **Projects** - Dynamic project showcase from GitHub
-- **Skills** - Tech stack visualization
-- **About** - Bio and professional information
-- **Contact** - Contact form and social links
+**Theme system**
+- Dark and light mode with system preference detection
+- Persisted across sessions via localStorage
+- Smooth color transitions on toggle
 
-## 🔑 Key Features
-
-### GitHub API Integration
-
-- Fetches user profile, repositories, and pinned projects
-- Displays live star counts, fork counts, and languages
-- Shows contribution calendar and recent activity
-- Rate limit handling and error recovery
-
-### Theme System
-
-- Dark and light mode support
-- System preference detection
-- Smooth color transitions
-- localStorage persistence
-
-### Performance
-
-- React Query caching (10-15 minute stale time)
-- localStorage backup caching
+**Performance**
+- React Query caching (10–15 minute stale time)
+- localStorage backup cache for GitHub data
 - Lazy loading and code splitting
-- Optimized images and assets
+- Optimized asset loading
 
-## 📝 Environment Variables
+## Environment variables
 
-| Variable                     | Description                                                       | Required |
-| ---------------------------- | ----------------------------------------------------------------- | -------- |
-| `VITE_GITHUB_TOKEN`          | GitHub Personal Access Token                                      | Yes      |
-| `VITE_GITHUB_USERNAME`       | Your GitHub username                                              | Yes      |
-| `VITE_GITHUB_FEATURED_REPOS` | Comma-separated repo names used if pinned repos cannot be fetched | No       |
+| Variable | Description | Required |
+|---|---|---|
+| `VITE_GITHUB_TOKEN` | GitHub Personal Access Token | Yes |
+| `VITE_GITHUB_USERNAME` | Your GitHub username | Yes |
+| `VITE_GITHUB_FEATURED_REPOS` | Comma-separated repo names, used as a fallback if pinned repos can't be fetched | No |
 
-## 🚀 Deployment
+## Deployment
 
-### Deploy to Netlify
+### Netlify
 
-1. **Push to GitHub**
+1. Push your changes to GitHub.
+2. In [Netlify](https://netlify.com), select **Add new site → Import an existing project**, connect your GitHub account, and choose this repository. Netlify will auto-detect build settings from `netlify.toml`.
+3. Under **Site settings → Environment variables**, add `VITE_GITHUB_TOKEN` and `VITE_GITHUB_USERNAME`.
+4. Deploy. Your site will be live at `https://your-site-name.netlify.app` — add a custom domain under **Site settings → Domain management** if needed.
 
-   ```bash
-   git add .
-   git commit -m "Ready for deployment"
-   git push origin main
-   ```
+Netlify auto-deploys on every push to `main`. Configure branch previews in `netlify.toml` if needed.
 
-2. **Connect to Netlify**
-   - Go to [Netlify](https://netlify.com) and sign in
-   - Click "Add new site" → "Import an existing project"
-   - Connect your GitHub account and select the repository
-   - Netlify will auto-detect the build settings from `netlify.toml`
-
-3. **Configure Environment Variables**
-
-   In Netlify dashboard, go to:
-   - Site settings → Environment variables
-   - Add the following variables:
-     - `VITE_GITHUB_TOKEN`: Your GitHub Personal Access Token
-     - `VITE_GITHUB_USERNAME`: `Mayen007`
-
-4. **Deploy**
-   - Click "Deploy site"
-   - Your site will be live at `https://your-site-name.netlify.app`
-   - Set up a custom domain in Site settings → Domain management
-
-### Manual Deployment
+### Manual deployment
 
 ```bash
-# Build the project
 npm run build
-
-# Deploy the dist folder to your hosting service
-# The build output is in the 'dist' directory
+# Deploy the contents of the 'dist' directory to your hosting provider
 ```
 
-### Continuous Deployment
+## Contributing
 
-Netlify automatically deploys when you push to the main branch. Configure deploy contexts in `netlify.toml` for branch previews and production deployments.
+Issues and feature requests are welcome — check the [issues page](https://github.com/Mayen007/Mayen/issues).
 
-## 🤝 Contributing
+## License
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Mayen007/Mayen/issues).
+[MIT](./LICENSE)
 
-## 📄 License
-
-This project is [MIT](./LICENSE) licensed.
-
-## 👤 Author
+## Author
 
 **Mayen Akech**
 
 - GitHub: [@Mayen007](https://github.com/Mayen007)
 - LinkedIn: [Mayen Akech](https://linkedin.com/in/mayenakech)
 - Email: mayenakech9@gmail.com
-- FreeCodeCamp: [@Mayen007](https://freecodecamp.org/Mayen007)
-
-## 🌟 Show Your Support
-
-Give a ⭐️ if you like this project!
 
 ---
 
-Built with ❤️ by Mayen Akech using React, Tailwind CSS, and Framer Motion
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+If you find this useful, a star on the repo is appreciated.
