@@ -1,6 +1,5 @@
 /**
  * Header Component
- * Enhanced navigation bar with active link tracking and smooth animations
  */
 
 import { useState, useEffect } from "react";
@@ -59,9 +58,22 @@ export const Header = () => {
 
   // Smooth scroll to section
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile && isMobileMenuOpen) {
+      // Close the menu first, then scroll once the collapse animation has settled
+      setIsMobileMenuOpen(false);
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 350); // matches the menu's exit transition duration (0.3s) + buffer
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       setIsMobileMenuOpen(false);
     }
   };
@@ -251,7 +263,7 @@ export const Header = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-white dark:bg-gray-900 -mx-4 px-4 sm:-mx-6 sm:px-6"
             >
               <div className="py-4 space-y-2">
                 {navLinks.map((link, index) => {
