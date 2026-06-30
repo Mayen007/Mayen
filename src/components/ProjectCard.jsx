@@ -125,26 +125,26 @@ export const ProjectCard = ({ project, index }) => {
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="mt-3 space-y-2.5 text-sm text-gray-600 dark:text-gray-400 border-l-2 border-primary-200 dark:border-primary-800 pl-3">
-                    <p>
-                      <span className="font-semibold text-gray-900 dark:text-gray-100">
-                        Problem:{" "}
-                      </span>
-                      {project.details.problem}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-gray-900 dark:text-gray-100">
-                        Solution:{" "}
-                      </span>
-                      {project.details.solution}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-gray-900 dark:text-gray-100">
-                        Outcome:{" "}
-                      </span>
-                      {project.details.outcome}
-                    </p>
-                  </div>
+                  <div className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400 border-l-2 border-primary-200 dark:border-primary-800 pl-3 leading-relaxed">
+  <p>
+    <span className="font-medium text-gray-700 dark:text-gray-300">
+      Problem —{" "}
+    </span>
+    {project.details.problem}
+  </p>
+  <p>
+    <span className="font-medium text-gray-700 dark:text-gray-300">
+      Solution —{" "}
+    </span>
+    {project.details.solution}
+  </p>
+  <p>
+    <span className="font-medium text-gray-700 dark:text-gray-300">
+      Outcome —{" "}
+    </span>
+    {project.details.outcome}
+  </p>
+</div>
                 </Motion.div>
               )}
             </AnimatePresence>
