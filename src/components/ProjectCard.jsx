@@ -4,12 +4,19 @@
  */
 
 import { useState, useEffect } from "react";
-import { motion as Motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiStar, FiGitBranch } from "react-icons/fi";
+import { motion as Motion, AnimatePresence } from "framer-motion";
+import {
+  FiGithub,
+  FiExternalLink,
+  FiStar,
+  FiGitBranch,
+  FiChevronDown,
+} from "react-icons/fi";
 
 export const ProjectCard = ({ project, index }) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageError, setImageError] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   // Lazy load image with delay to avoid loading every card at once.
   useEffect(() => {
@@ -88,9 +95,61 @@ export const ProjectCard = ({ project, index }) => {
         </h3>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-2 line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
           {project.description || "No description available"}
         </p>
+
+        {/* Problem / Solution / Outcome (expandable) */}
+        {project.details && (
+          <div className="mb-4">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="flex items-center gap-1 text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+              aria-expanded={expanded}
+            >
+              <span>{expanded ? "Show less" : "View details"}</span>
+              <Motion.span
+                animate={{ rotate: expanded ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <FiChevronDown className="w-4 h-4" />
+              </Motion.span>
+            </button>
+
+            <AnimatePresence>
+              {expanded && (
+                <Motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-3 space-y-2.5 text-sm text-gray-600 dark:text-gray-400 border-l-2 border-primary-200 dark:border-primary-800 pl-3">
+                    <p>
+                      <span className="font-semibold text-gray-900 dark:text-gray-100">
+                        Problem:{" "}
+                      </span>
+                      {project.details.problem}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-gray-900 dark:text-gray-100">
+                        Solution:{" "}
+                      </span>
+                      {project.details.solution}
+                    </p>
+                    <p>
+                      <span className="font-semibold text-gray-900 dark:text-gray-100">
+                        Outcome:{" "}
+                      </span>
+                      {project.details.outcome}
+                    </p>
+                  </div>
+                </Motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
 
         {/* Topics/Tags */}
         {project.topics && project.topics.length > 0 && (
