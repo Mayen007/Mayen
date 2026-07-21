@@ -56,27 +56,49 @@ export const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg"
           >
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
               My Story
             </h3>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              I'm a Full-Stack Developer based in Nairobi, Kenya, working toward
-              a BSc in Information Technology at Mount Kenya University (2027).
-              My focus is frontend engineering — building interfaces that are
-              fast, accessible, and genuinely pleasant to use.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              I work primarily in React, with a strong handle on the backend
-              systems that power it — REST APIs, MongoDB, and Node.js. Recent
-              work includes a community platform for MKUSSSA and a developer
-              job-tracking system tailored for the Kenyan market.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              I care about the details — component architecture, UI consistency,
-              and interfaces built around how people actually use them.
-              Currently deepening my knowledge of performance optimization and
-              modern design systems.
-            </p>
+
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400 mb-2">
+                  Who I Am
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  I'm a Full-Stack Developer based in Nairobi, Kenya, working
+                  toward a BSc in Information Technology at Mount Kenya
+                  University (2027). My focus is frontend engineering —
+                  building interfaces that are fast, accessible, and
+                  genuinely pleasant to use.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400 mb-2">
+                  What I Build
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  I work primarily in React, with a strong handle on the
+                  backend systems that power it — REST APIs, MongoDB, and
+                  Node.js. Recent work includes a community platform for
+                  MKUSSSA and a developer job-tracking system tailored for
+                  the Kenyan market.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400 mb-2">
+                  Current Focus
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  I care about the details — component architecture, UI
+                  consistency, and interfaces built around how people
+                  actually use them. Currently deepening my knowledge of
+                  performance optimization and modern design systems.
+                </p>
+              </div>
+            </div>
           </Motion.div>
 
           {/* Info Card */}

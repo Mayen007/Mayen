@@ -43,43 +43,58 @@ const PROJECTS = [
     screenshotUrl: "/project-screenshots/readitt.png",
   },
   {
-    id: "mkusssa",
-    name: "MKUSSSA - Nairobi Campus",
-    description:
-      "A website for MKUSSSA - Nairobi Campus built with HTML, CSS and JavaScript for functionality.",
-    url: "https://github.com/Mayen007/mkusssa",
-    homepageUrl: "https://mkusssa-nairobi.netlify.app/",
-    primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
-    stargazerCount: 0,
-    forkCount: 0,
-    topics: [
-      "student-association",
-      "intermediate-project",
-      "modern-ui",
-      "html-css-javascript",
-      "responsive-web-design",
-    ],
-    screenshotUrl: "/project-screenshots/mkusssa.png",
+  id: "mkusssa",
+  name: "MKUSSSA - Nairobi Campus",
+  description:
+    "A community platform for MKUSSSA, replacing scattered WhatsApp updates with a centralized hub for members, events, and announcements.",
+  details: {
+    problem:
+      "MKU's South Sudanese Students' Association had no formal online presence — membership info, events, and announcements were scattered across WhatsApp threads and word of mouth.",
+    solution:
+      "Designed and built a full-stack platform with member profiles, event listings, announcements, and an image gallery — handling custom domain setup, Cloudinary image hosting, and Render deployment end-to-end.",
+    outcome:
+      "A live, centralized hub the association now uses to manage members and communicate, replacing fragmented updates with one accessible source of truth.",
   },
-  {
-    id: "reviwa",
-    name: "reviwa",
-    description:
-      "Application designed to make urban waste management smarter, more transparent, and community-driven.",
-    url: "https://github.com/Mayen007/reviwa",
-    homepageUrl: "https://reviwa.netlify.app/",
-    primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
-    stargazerCount: 0,
-    forkCount: 0,
-    topics: [
-      "waste-management",
-      "sustainability",
-      "react",
-      "nodejs",
-      "mern-stack",
-    ],
-    screenshotUrl: "/project-screenshots/reviwa.png",
+  url: "https://github.com/Mayen007/mkusssa",
+  homepageUrl: "https://mkusssa-nairobi.netlify.app/",
+  primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
+  stargazerCount: 0,
+  forkCount: 0,
+  topics: [
+    "student-association",
+    "mern-stack",
+    "modern-ui",
+    "responsive-web-design",
+  ],
+  screenshotUrl: "/project-screenshots/mkusssa.png",
+},
+{
+  id: "reviwa",
+  name: "reviwa",
+  description:
+    "A community-driven platform that makes urban waste reporting smarter, more transparent, and trackable.",
+  details: {
+    problem:
+      "Residents had no straightforward way to report waste issues in their area — problems went unnoticed with no visibility for local authorities or community organizers.",
+    solution:
+      "Built a waste reporting platform where users flag waste by location on an interactive map, track report status, and earn eco-points for participation, with an admin dashboard to manage responses.",
+    outcome:
+      "Turns waste reporting into something visible and trackable instead of informal complaints, giving residents and admins a shared system to act on.",
   },
+  url: "https://github.com/Mayen007/reviwa",
+  homepageUrl: "https://reviwa.netlify.app/",
+  primaryLanguage: { name: "JavaScript", color: "#F7DF1E" },
+  stargazerCount: 0,
+  forkCount: 0,
+  topics: [
+    "waste-management",
+    "sustainability",
+    "react",
+    "nodejs",
+    "mern-stack",
+  ],
+  screenshotUrl: "/project-screenshots/reviwa.png",
+},
   {
     id: "EasyPark",
     name: "EasyPark",
