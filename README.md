@@ -221,7 +221,7 @@ This project is [MIT](./LICENSE) licensed.
 **Mayen Akech**
 
 - GitHub: [@Mayen007](https://github.com/Mayen007)
-- LinkedIn: [Mayen Akech](https://linkedin.com/in/mayenakech)
+- LinkedIn: [Mayen Akech](https://www.linkedin.com/in/makech)
 - Email: mayenakech9@gmail.com
 - FreeCodeCamp: [@Mayen007](https://freecodecamp.org/Mayen007)
 
