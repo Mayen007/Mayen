@@ -3,6 +3,7 @@
  * Animated introduction with GitHub stats and CTA buttons
  */
 
+import { useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { FiArrowDown } from "react-icons/fi";
 import { Button } from "./ui/Button";
@@ -14,6 +15,7 @@ import { TypeAnimation } from "react-type-animation";
  */
 export const Hero = () => {
   const { data: user, isLoading } = useGitHubUser();
+  const [typingDone, setTypingDone] = useState(false);
 
   // Animation variants
   const containerVariants = {
@@ -125,13 +127,18 @@ export const Hero = () => {
             className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
           >
             {user?.name ? (
-              <TypeAnimation
-                sequence={[user.name, 1000]}
-                wrapper="span"
-                speed={10}
-                className="text-gradient"
-                cursor={true}
-              />
+              <>
+                <TypeAnimation
+                  sequence={[user.name, 1000, () => setTypingDone(true)]}
+                  wrapper="span"
+                  speed={10}
+                  className="text-gradient"
+                  cursor={false}
+                />
+                {!typingDone && (
+                  <span className="inline-block w-[3px] h-[0.85em] bg-gradient-to-b from-primary-500 to-purple-500 rounded-sm animate-pulse ml-1 align-middle" />
+                )}
+              </>
             ) : isLoading ? (
               <span className="text-gradient">...</span>
             ) : (
