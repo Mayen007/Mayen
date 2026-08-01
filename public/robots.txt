@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://mayenakech.netlify.app/sitemap.xml
+Sitemap: https://www.makech.me/sitemap.xml

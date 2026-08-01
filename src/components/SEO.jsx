@@ -8,8 +8,8 @@ import { useEffect } from "react";
 export const SEO = ({
   title = "Mayen Akech - Full-Stack Developer",
   description = "Full-Stack Developer passionate about building innovative web solutions. Specializing in React, Python, Node.js, and modern web technologies.",
-  image = "https://mayenakech.netlify.app/og-image.png",
-  url = "https://mayenakech.netlify.app",
+  image = "https://www.makech.me/og-image.png",
+  url = "https://www.makech.me",
   type = "website",
 }) => {
   useEffect(() => {

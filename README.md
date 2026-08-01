@@ -4,7 +4,7 @@
 
 A modern, responsive portfolio site showcasing my projects, skills, and experience. Built with React and Tailwind CSS, with live GitHub data pulled in via the GitHub API.
 
-**Live site:** [makech.netlify.app](https://makech.netlify.app)
+**Live site:** [makech.me](https://www.makech.me)
 
 ## Features
 
