@@ -93,10 +93,10 @@ export const Header = () => {
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <Motion.a
-            href="#home"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection("#home");
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="relative text-2xl font-bold cursor-pointer group"
             whileHover={{ scale: 1.05 }}
