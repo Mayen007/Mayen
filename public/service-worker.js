@@ -8,7 +8,7 @@ const CACHE_NAME = 'mayen-portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/favicon1.svg',
+  '/favicon.svg',
   '/og-image.svg',
 ];
 
