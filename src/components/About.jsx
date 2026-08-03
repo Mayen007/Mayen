@@ -28,7 +28,7 @@ export const About = () => {
     : null;
 
   return (
-    <Section id="about" className="bg-gray-50 dark:bg-gray-800/50">
+    <Section id="about" className="bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,14 +47,14 @@ export const About = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto px-0">
           {/* Bio Card */}
           <Motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg"
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg"
           >
             <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
               My Story
@@ -103,11 +103,11 @@ export const About = () => {
 
           {/* Info Card */}
           <Motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg"
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg"
           >
             <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
               Quick Info
@@ -186,7 +186,7 @@ export const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mt-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto mt-8"
         >
           {[
             { label: "Projects", value: user?.public_repos || 0 },
@@ -196,9 +196,9 @@ export const About = () => {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow text-center"
+              className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow text-center"
             >
-              <div className="text-3xl font-bold text-gradient mb-1">
+              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">
                 {stat.value}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -219,7 +219,7 @@ export const About = () => {
           <Motion.a
             href="/Mayen Akech Resume.pdf"
             download="Mayen Akech Resume.pdf"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
+            className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >

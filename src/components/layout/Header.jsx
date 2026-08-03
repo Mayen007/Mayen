@@ -13,6 +13,7 @@ import {
   FiLinkedin,
 } from "react-icons/fi";
 import { useTheme } from "../../hooks/useTheme";
+import { Logo } from "../Logo";
 
 // Navigation links
 const navLinks = [
@@ -98,10 +99,11 @@ export const Header = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="relative text-2xl font-bold cursor-pointer group"
+            className="flex items-center relative text-2xl font-bold cursor-pointer group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
+            <Logo className="w-7 h-7" />
             <span className="text-gradient">Mayen</span>
             <span className="text-gray-400 dark:text-gray-600 ml-1">.</span>
             <Motion.span

@@ -47,7 +47,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
+    <section className="min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Motion.div
@@ -162,9 +162,9 @@ export const Hero = () => {
             user && (
               <Motion.div
                 variants={itemVariants}
-                className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2"
+                className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2 w-full"
               >
-                <div className="text-center min-w-[80px] sm:min-w-[90px]">
+                <div className="text-center flex-1 min-w-0">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                     {user.public_repos}
                   </div>
@@ -172,7 +172,7 @@ export const Hero = () => {
                     Repositories
                   </div>
                 </div>
-                <div className="text-center min-w-[80px] sm:min-w-[90px]">
+                <div className="text-center flex-1 min-w-0">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                     {user.followers}
                   </div>
@@ -180,7 +180,7 @@ export const Hero = () => {
                     Followers
                   </div>
                 </div>
-                <div className="text-center min-w-[80px] sm:min-w-[90px]">
+                <div className="text-center flex-1 min-w-0">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                     {user.following}
                   </div>
