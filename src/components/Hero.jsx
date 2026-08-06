@@ -1,30 +1,20 @@
-/**
- * Hero Section Component
- * Animated introduction with GitHub stats and CTA buttons
- */
-
-import { useState } from "react";
 import { motion as Motion } from "framer-motion";
-import { FiArrowDown } from "react-icons/fi";
-import { Button } from "./ui/Button";
+import { FiMapPin, FiGithub, FiExternalLink, FiCode, FiArrowUpRight } from "react-icons/fi";
 import { useGitHubUser } from "../hooks";
-import { TypeAnimation } from "react-type-animation";
 
 /**
- * Hero component with animated introduction and live GitHub stats
+ * Hero Component - Viewport stable with 4 text elements max
  */
 export const Hero = () => {
   const { data: user, isLoading } = useGitHubUser();
-  const [typingDone, setTypingDone] = useState(false);
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
       },
     },
   };
@@ -34,11 +24,10 @@ export const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
-  // Scroll to section
   const scrollToSection = (id) => {
     const element = document.querySelector(id);
     if (element) {
@@ -47,187 +36,180 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
-      {/* Animated background elements */}
+    <section className="min-h-[100dvh] flex items-center justify-center relative overflow-x-hidden bg-white dark:bg-zinc-950 w-full pt-20 pb-12 md:pt-24 md:pb-16">
+      {/* Background Mesh Texture */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <Motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        <Motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        {/* Light mode grid */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl" />
+
+        {/* Grid Pattern */}
         <div
-          className="absolute inset-0 dark:hidden"
+          className="absolute inset-0 dark:hidden opacity-30"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />
-
-        {/* Dark mode grid */}
         <div
-          className="absolute inset-0 hidden dark:block"
+          className="absolute inset-0 hidden dark:block opacity-20"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />
       </div>
 
-      {/* Content */}
+      {/* Main Container */}
       <Motion.div
-        className="container-custom relative z-10 py-16 md:py-20 w-full"
+        className="container-custom relative z-10 w-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-4xl mx-auto text-center px-4">
-          {/* Avatar */}
-          {user?.avatar_url && (
-            <Motion.div variants={itemVariants} className="mb-8">
-              <img
-                src={user.avatar_url}
-                alt={user.name || "Profile"}
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-primary-500 shadow-2xl"
-              />
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Exactly 4 Hero Text Elements (col-span-7) */}
+          <div className="lg:col-span-7 text-left space-y-5">
+            {/* Element 1: Status Badge */}
+            <Motion.div variants={itemVariants}>
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                AVAILABLE FOR Q3/Q4 COMMISSIONS
+              </span>
             </Motion.div>
-          )}
 
-          {/* Greeting */}
-          <Motion.div variants={itemVariants}>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2">
-              Hey, I'm
-            </p>
-          </Motion.div>
+            {/* Element 2: 2-Line Desktop Display Headline */}
+            <Motion.h1
+              variants={itemVariants}
+              className="text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-black tracking-tight text-gray-900 dark:text-white leading-[1.02] uppercase"
+            >
+              MAYEN AKECH<br />
+              <span className="text-blue-600 dark:text-blue-500">INTERFACE ARCHITECT.</span>
+            </Motion.h1>
 
-          {/* Name */}
-          <Motion.h1
-            variants={itemVariants}
-            className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
-          >
-            {user?.name ? (
-              <>
-                <TypeAnimation
-                  sequence={[user.name, 1000, () => setTypingDone(true)]}
-                  wrapper="span"
-                  speed={10}
-                  className="text-gradient"
-                  cursor={false}
-                />
-                {!typingDone && (
-                  <span className="inline-block w-[3px] h-[0.85em] bg-gradient-to-b from-primary-500 to-purple-500 rounded-sm animate-pulse ml-1 align-middle" />
-                )}
-              </>
-            ) : isLoading ? (
-              <span className="text-gradient">...</span>
-            ) : (
-              <span className="text-gradient">Mayen Akech</span>
-            )}
-          </Motion.h1>
+            {/* Element 3: Subtext Copy (14 words) */}
+            <Motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-zinc-300 max-w-lg leading-relaxed font-normal"
+            >
+              Building high-performance React web applications, Node.js services, and high-craft UI engineering in Nairobi.
+            </Motion.p>
 
-          {/* Bio */}
-          <Motion.p
-            variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto px-4"
-          >
-            {user?.bio || "Crafting interfaces people actually enjoy using."}
-          </Motion.p>
-          {/* Stats / Loading */}
-          {isLoading ? (
-            <Motion.div variants={itemVariants} className="mb-8">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-primary-500" />
-            </Motion.div>
-          ) : (
-            user && (
-              <Motion.div
-                variants={itemVariants}
-                className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2 w-full"
+            {/* Element 4: Action CTAs */}
+            <Motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-4 pt-2"
+            >
+              <button
+                onClick={() => scrollToSection("#projects")}
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs sm:text-sm uppercase font-bold tracking-wider rounded-xl shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <div className="text-center flex-1 min-w-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
-                    {user.public_repos}
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
-                    Repositories
-                  </div>
-                </div>
-                <div className="text-center flex-1 min-w-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
-                    {user.followers}
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
-                    Followers
-                  </div>
-                </div>
-                <div className="text-center flex-1 min-w-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
-                    {user.following}
-                  </div>
-                  <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
-                    Following
-                  </div>
-                </div>
-              </Motion.div>
-            )
-          )}
+                <span>EXPLORE WORK</span>
+                <FiArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+              <button
+                onClick={() => scrollToSection("#contact")}
+                className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-gray-300 dark:border-zinc-700 hover:border-blue-600 dark:hover:border-blue-500 text-gray-900 dark:text-white font-mono text-xs sm:text-sm uppercase font-bold tracking-wider rounded-xl transition-all"
+              >
+                <span>GET IN TOUCH</span>
+              </button>
+            </Motion.div>
+          </div>
 
-          {/* CTA Buttons */}
+          {/* Right Column: Profile Card with Folded Tech Stack (col-span-5) */}
           <Motion.div
             variants={itemVariants}
-            className="flex justify-center gap-3 sm:gap-4 mt-4 mb-3 px-4"
+            className="lg:col-span-5 w-full"
           >
-            <Button onClick={() => scrollToSection("#projects")} size="md">
-              View Projects
-            </Button>
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              variant="secondary"
-              size="md"
-            >
-              Get in Touch
-            </Button>
-          </Motion.div>
+            <div className="glass-card rounded-3xl p-6 relative overflow-hidden group border-2 border-blue-500/20">
+              {/* Saturated Accent Top Bar */}
+              <div className="absolute top-0 inset-x-0 h-1.5 bg-blue-600" />
 
-          {/* Scroll indicator */}
-          <Motion.div
-            variants={itemVariants}
-            className="mt-7 mb-0 flex justify-center"
-          >
-            <Motion.button
-              onClick={() => scrollToSection("#about")}
-              className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2,
-              }}
-            >
-              <span className="text-sm mb-2">Scroll to explore</span>
-              <FiArrowDown className="w-6 h-7" />
-            </Motion.button>
+              {/* Profile Header */}
+              <div className="flex items-center gap-4 mb-5">
+                {user?.avatar_url ? (
+                  <img
+                    src={user.avatar_url}
+                    alt={user.name || "Mayen Akech"}
+                    className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border-2 border-blue-500 p-0.5 bg-white dark:bg-zinc-900 shadow-lg"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-2xl">
+                    MA
+                  </div>
+                )}
+                <div>
+                  <h3 className="text-xl font-extrabold text-gray-900 dark:text-white leading-tight uppercase tracking-tight">
+                    {user?.name || "Mayen Akech"}
+                  </h3>
+                  <p className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 mt-0.5">
+                    @Mayen007
+                  </p>
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-gray-500 dark:text-zinc-400 mt-1">
+                    <FiMapPin className="w-3.5 h-3.5 text-blue-500" />
+                    <span>{user?.location || "Nairobi, Kenya"}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* GitHub Metrics Grid */}
+              <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-gray-50 dark:bg-zinc-950/80 border border-gray-200/80 dark:border-zinc-800 mb-4 text-center">
+                <div>
+                  <div className="text-xl font-black text-blue-600 dark:text-blue-400 font-mono">
+                    {isLoading ? "..." : user?.public_repos || 0}
+                  </div>
+                  <div className="text-[10px] font-mono font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-widest mt-0.5">
+                    REPOS
+                  </div>
+                </div>
+                <div className="border-x border-gray-200 dark:border-zinc-800">
+                  <div className="text-xl font-black text-gray-900 dark:text-white font-mono">
+                    {isLoading ? "..." : user?.followers || 0}
+                  </div>
+                  <div className="text-[10px] font-mono font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-widest mt-0.5">
+                    FOLLOWERS
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xl font-black text-gray-900 dark:text-white font-mono">
+                    {isLoading ? "..." : user?.following || 0}
+                  </div>
+                  <div className="text-[10px] font-mono font-bold text-gray-500 dark:text-zinc-400 uppercase tracking-widest mt-0.5">
+                    FOLLOWING
+                  </div>
+                </div>
+              </div>
+
+              {/* Tech Stack Row Folded Into Card */}
+              <div className="flex flex-wrap gap-1.5 mb-5">
+                {["REACT", "TYPESCRIPT", "PYTHON", "NODE.JS", "MONGODB", "TAILWIND"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider rounded-md bg-gray-100 dark:bg-zinc-950 text-gray-800 dark:text-zinc-200 border border-gray-200/70 dark:border-zinc-800"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Quick Info & Social Footer */}
+              <div className="flex items-center justify-between pt-3 border-t border-gray-200/70 dark:border-zinc-800 text-xs">
+                <span className="text-gray-500 dark:text-zinc-400 font-mono flex items-center gap-1.5 font-medium">
+                  <FiCode className="w-3.5 h-3.5 text-blue-500" /> Full-Stack IT Student
+                </span>
+                <a
+                  href="https://github.com/Mayen007"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline font-mono font-bold uppercase tracking-wider"
+                >
+                  <FiGithub className="w-3.5 h-3.5" />
+                  GitHub
+                  <FiExternalLink className="w-3 h-3 ml-0.5" />
+                </a>
+              </div>
+            </div>
           </Motion.div>
         </div>
       </Motion.div>

@@ -49,9 +49,9 @@ const PROJECTS = [
     "A community platform for MKUSSSA, replacing scattered WhatsApp updates with a centralized hub for members, events, and announcements.",
   details: {
     problem:
-      "MKU's South Sudanese Students' Association had no formal online presence — membership info, events, and announcements were scattered across WhatsApp threads and word of mouth.",
+      "MKU's South Sudanese Students' Association had no formal online presence: membership info, events, and announcements were scattered across WhatsApp threads and word of mouth.",
     solution:
-      "Designed and built a full-stack platform with member profiles, event listings, announcements, and an image gallery — handling custom domain setup, Cloudinary image hosting, and Render deployment end-to-end.",
+      "Designed and built a full-stack platform with member profiles, event listings, announcements, and an image gallery, handling custom domain setup, Cloudinary image hosting, and Render deployment end-to-end.",
     outcome:
       "A live, centralized hub the association now uses to manage members and communicate, replacing fragmented updates with one accessible source of truth.",
   },
@@ -75,7 +75,7 @@ const PROJECTS = [
     "A community-driven platform that makes urban waste reporting smarter, more transparent, and trackable.",
   details: {
     problem:
-      "Residents had no straightforward way to report waste issues in their area — problems went unnoticed with no visibility for local authorities or community organizers.",
+      "Residents had no straightforward way to report waste issues in their area; problems went unnoticed with no visibility for local authorities or community organizers.",
     solution:
       "Built a waste reporting platform where users flag waste by location on an interactive map, track report status, and earn eco-points for participation, with an admin dashboard to manage responses.",
     outcome:
@@ -173,35 +173,37 @@ export const Projects = () => {
         {/* Section Header */}
         <Motion.div
           variants={headingVariants}
-          className="text-center mb-8 sm:mb-12"
+          className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            <span className="text-gradient">Featured Projects</span>
+          <div className="inline-block px-3 py-1 mb-3 font-mono font-bold text-xs uppercase tracking-widest bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 rounded-md">
+            SELECTED COMMISSIONS
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-gray-900 dark:text-white mb-3">
+            FEATURED <span className="text-blue-600 dark:text-blue-500">WORKS.</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            A collection of my best work, showcasing various technologies and
-            problem-solving approaches.
+          <p className="text-base sm:text-lg text-gray-600 dark:text-zinc-300 max-w-xl mx-auto px-4 font-normal">
+            A curated showcase of web platforms, developer tools, and full-stack solutions.
           </p>
         </Motion.div>
 
         {/* Filter Buttons */}
         <Motion.div
           variants={headingVariants}
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-14 px-4"
         >
           {languages.map((lang) => (
             <Motion.button
               key={lang}
               onClick={() => setFilter(lang)}
-              className={`px-3 py-2 sm:px-4 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base ${
+              className={`px-4 py-2 rounded-xl font-mono font-bold text-xs uppercase tracking-wider transition-all duration-200 ${
                 filter === lang
-                  ? "bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg shadow-primary-500/30"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-700"
+                  ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
+                  : "glass-card text-gray-700 dark:text-zinc-300 hover:border-blue-500/50"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {lang === "all" ? "All Projects" : lang}
+              {lang === "all" ? "ALL PROJECTS" : lang}
             </Motion.button>
           ))}
         </Motion.div>

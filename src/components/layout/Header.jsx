@@ -107,7 +107,7 @@ export const Header = () => {
             <span className="text-gradient">Mayen</span>
             <span className="text-gray-400 dark:text-gray-600 ml-1">.</span>
             <Motion.span
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-500"
+              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-sky-500"
               initial={{ width: 0 }}
               whileHover={{ width: "100%" }}
               transition={{ duration: 0.3 }}

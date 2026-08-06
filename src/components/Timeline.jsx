@@ -26,13 +26,13 @@ export const Timeline = () => {
       description:
         "Specialized training in MongoDB, Express.js, React, and Node.js. Building production-ready full-stack applications.",
       icon: FiAward,
-      color: "from-purple-500 to-pink-500",
+      color: "from-primary-600 to-sky-500",
       status: "completed",
     },
     {
       year: "2024",
       title: "Technical University of Munich",
-      subtitle: "Digital Product Development — Coursera",
+      subtitle: "Digital Product Development (Coursera)",
       description:
         "Covered product development strategy, AWS cloud infrastructure, Generative AI, MLOps, and Lean methodologies applied to full-stack projects.",
       icon: FiAward,
@@ -103,7 +103,7 @@ export const Timeline = () => {
         <div className="max-w-4xl mx-auto px-2 sm:px-4">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-purple-500 to-pink-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-sky-500 transform md:-translate-x-1/2" />
 
             {/* Timeline Items */}
             <div className="space-y-12">
@@ -126,12 +126,13 @@ export const Timeline = () => {
                       }`}
                     >
                       <Motion.div
-                        className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-                        whileHover={{ y: -5 }}
+                        className="glass-card rounded-2xl p-6 transition-all duration-300"
+                        whileHover={{ y: -4 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 25 }}
                       >
                         {/* Year Badge */}
                         <div
-                          className={`inline-block px-4 py-1 rounded-full text-sm font-semibold mb-3 bg-gradient-to-r ${milestone.color} text-white`}
+                          className="inline-block px-3.5 py-1 rounded-full text-xs font-mono font-semibold mb-3 bg-primary-600 dark:bg-primary-500 text-white shadow-sm"
                         >
                           {milestone.year}
                         </div>

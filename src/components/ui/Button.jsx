@@ -23,7 +23,7 @@ export const Button = ({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-primary-500 to-purple-600 text-white hover:from-primary-600 hover:to-purple-700 shadow-lg hover:shadow-xl",
+      "bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white shadow-md hover:shadow-lg",
     secondary:
       "border-2 border-primary-500 text-primary-500 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20",
     ghost:

@@ -113,25 +113,26 @@ export const Contact = () => {
                     : undefined
                 }
                 variants={itemVariants}
-                className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
+                className="group glass-card rounded-2xl p-6 transition-all duration-300"
                 whileHover={{ y: -4, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 350, damping: 25 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-start gap-4">
                   <div
-                    className={`p-3 rounded-lg bg-gray-50 dark:bg-gray-700 ${method.color} group-hover:scale-110 transition-transform`}
+                    className={`p-3 rounded-xl bg-gray-100 dark:bg-zinc-800 ${method.color} group-hover:scale-110 transition-transform`}
                   >
                     <Icon className="w-6 h-6" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-0.5">
                       {method.label}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 truncate">
+                    <p className="text-sm text-gray-600 dark:text-zinc-300 truncate">
                       {method.value}
                     </p>
                   </div>
-                  <FiExternalLink className="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors flex-shrink-0" />
+                  <FiExternalLink className="w-4 h-4 text-gray-400 group-hover:text-primary-500 transition-colors flex-shrink-0" />
                 </div>
               </Motion.a>
             );
@@ -142,7 +143,7 @@ export const Contact = () => {
         {user?.location && (
           <Motion.div
             variants={itemVariants}
-            className="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
+            className="glass-card rounded-2xl p-6 text-center"
           >
             <div className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400">
               <FiMapPin className="w-5 h-5" />

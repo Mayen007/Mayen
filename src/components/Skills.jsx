@@ -60,7 +60,7 @@ export const Skills = () => {
     },
     {
       title: "Tools & Platforms",
-      color: "from-purple-500 to-pink-500",
+      color: "from-primary-600 to-sky-500",
       skills: [
         { name: "Git", icon: SiGit, color: "#F05032" },
         { name: "GitHub", icon: SiGithub, color: "#181717" },
@@ -148,22 +148,23 @@ export const Skills = () => {
                     <Motion.div
                       key={skill.name}
                       variants={itemVariants}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                      whileHover={{ scale: 1.05, y: -4 }}
+                      transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                      className="group glass-card rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/80 dark:border-zinc-800"
                     >
                       <div className="flex flex-col items-center text-center space-y-3">
                         <div
-                          className="p-3 rounded-lg transition-colors duration-300"
+                          className="p-3 rounded-xl transition-transform duration-300 group-hover:scale-110"
                           style={{
                             backgroundColor: `${skill.color}15`,
                           }}
                         >
                           <Icon
-                            className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
+                            className="w-8 h-8 sm:w-10 sm:h-10"
                             style={{ color: skill.color }}
                           />
                         </div>
-                        <span className="font-medium text-gray-900 dark:text-gray-100">
+                        <span className="font-medium text-sm sm:text-base text-gray-900 dark:text-zinc-100">
                           {skill.name}
                         </span>
                       </div>
