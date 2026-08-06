@@ -1,47 +1,58 @@
-/**
- * Logo Component
- * Abstract monogram mark — a solid "M" silhouette with a negative-space "A"
- * cut through the lower center.
- *
- * Uses fill-rule="evenodd" to create the A as true transparency (not a
- * painted white shape), so the mark renders correctly on any background —
- * light, dark, gradient, or image — with no separate dark-mode variant needed.
- *
- * Usage:
- *   <Logo className="w-8 h-8" />        // sized via Tailwind
- *   <Logo size={40} />                   // sized via explicit pixel value
- */
+import React from "react";
 
-export const Logo = ({ className = "w-8 h-8", size, ...props }) => {
+export function Logo({
+  size = 160,
+  color = "#2563eb",
+  bracketOpacity = 0.78,
+  showFrame = true,
+  className = "",
+}) {
   return (
     <svg
-      viewBox="-52 -58 104 116"
       width={size}
       height={size}
-      className={size ? undefined : className}
+      viewBox="0 0 1600 1600"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Mayen Akech logo"
-      {...props}
+      aria-label="Mayen logo mark"
+      className={className}
     >
-      <defs>
-        <linearGradient
-          id="mayen-logo-gradient"
-          x1="0%"
-          y1="0%"
-          x2="100%"
-          y2="100%"
-        >
-          <stop offset="0%" stopColor="#06B6D4" />
-          <stop offset="100%" stopColor="#7C3AED" />
-        </linearGradient>
-      </defs>
+      {showFrame && (
+        <g fill={color} fillOpacity={bracketOpacity}>
+          <path d="M 137.0,137.0 L 137.0,350.0 L 183.0,350.0 L 183.0,183.0 L 350.0,183.0 L 350.0,137.0 L 137.0,137.0 Z" />
+          <path d="M 1417.0,183.0 L 1417.0,350.0 L 1463.0,350.0 L 1463.0,137.0 L 1250.0,137.0 L 1250.0,183.0 L 1417.0,183.0 Z" />
+          <path d="M 183.0,1417.0 L 183.0,1250.0 L 137.0,1250.0 L 137.0,1463.0 L 350.0,1463.0 L 350.0,1417.0 L 183.0,1417.0 Z" />
+          <path d="M 1463.0,1463.0 L 1463.0,1250.0 L 1417.0,1250.0 L 1417.0,1417.0 L 1250.0,1417.0 L 1250.0,1463.0 L 1463.0,1463.0 Z" />
+        </g>
+      )}
       <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        fill="url(#mayen-logo-gradient)"
-        d="M -46 52 L -46 -52 L 0 8 L 46 -52 L 46 52 Z M 0 8 L 20 52 L -20 52 Z"
+        fill={color}
+        d="M 555.0,788.2 L 800.0,1079.2 L 1045.0,788.2 L 1045.0,1222.7 L 1195.0,1222.7 L 1195.0,377.3 L 800.0,846.3 L 405.0,377.3 L 405.0,1222.7 L 555.0,1222.7 L 555.0,788.2 Z"
       />
     </svg>
   );
-};
+}
+
+export default Logo;
+
+/* ---- Demo: light + dark context, plus a wordmark lockup ---- */
+export function LogoDemo() {
+  return (
+    <div className="w-full min-h-[420px] bg-slate-100 flex flex-col md:flex-row items-stretch justify-center gap-4 p-6">
+      <div className="flex-1 bg-slate-50 rounded-xl flex flex-col items-center justify-center gap-6 py-10">
+        <Logo size={140} color="#386EEB" />
+        <div className="flex items-center gap-2">
+          <Logo size={28} color="#386EEB" />
+          <span className="text-2xl font-medium text-slate-900">Mayen</span>
+        </div>
+      </div>
+      <div className="flex-1 bg-slate-950 rounded-xl flex flex-col items-center justify-center gap-6 py-10">
+        <Logo size={140} color="#FFFFFF" bracketOpacity={0.55} />
+        <div className="flex items-center gap-2">
+          <Logo size={28} color="#FFFFFF" bracketOpacity={0.55} />
+          <span className="text-2xl font-medium text-white">Mayen</span>
+        </div>
+      </div>
+    </div>
+  );
+}
