@@ -104,10 +104,10 @@ export const Header = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Logo className="w-8 h-8" size={100} />
-            <span className="text-gradient">Mayen</span>
+            <span className="font-display text-gradient">Mayen</span>
             <span className="text-gray-400 dark:text-gray-600 ml-1">.</span>
             <Motion.span
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-500"
+              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-primary-700"
               initial={{ width: 0 }}
               whileHover={{ width: "100%" }}
               transition={{ duration: 0.3 }}

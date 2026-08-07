@@ -47,11 +47,11 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-white via-primary-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
+    <section className="min-h-screen flex items-center justify-center relative overflow-x-hidden bg-gradient-to-br from-white via-primary-50/40 to-primary-100/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 w-full">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-400/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 90, 0],
@@ -63,7 +63,7 @@ export const Hero = () => {
           }}
         />
         <Motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-700/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [90, 0, 90],
@@ -109,7 +109,7 @@ export const Hero = () => {
               <img
                 src={user.avatar_url}
                 alt={user.name || "Profile"}
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-primary-500 shadow-2xl"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-primary-600 shadow-2xl"
               />
             </Motion.div>
           )}
@@ -124,7 +124,7 @@ export const Hero = () => {
           {/* Name */}
           <Motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
+            className="font-display text-3xl sm:text-5xl md:text-7xl font-bold mb-6 px-2"
           >
             {user?.name ? (
               <>
@@ -136,7 +136,7 @@ export const Hero = () => {
                   cursor={false}
                 />
                 {!typingDone && (
-                  <span className="inline-block w-[3px] h-[0.85em] bg-gradient-to-b from-primary-500 to-purple-500 rounded-sm animate-pulse ml-1 align-middle" />
+                  <span className="inline-block w-[3px] h-[0.85em] bg-gradient-to-b from-primary-500 to-primary-700 rounded-sm animate-pulse ml-1 align-middle" />
                 )}
               </>
             ) : isLoading ? (
@@ -156,7 +156,7 @@ export const Hero = () => {
           {/* Stats / Loading */}
           {isLoading ? (
             <Motion.div variants={itemVariants} className="mb-8">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-primary-500" />
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-primary-600" />
             </Motion.div>
           ) : (
             user && (
@@ -165,7 +165,7 @@ export const Hero = () => {
                 className="flex justify-center gap-4 sm:gap-6 md:gap-12 mb-8 px-3 sm:px-2 w-full"
               >
                 <div className="text-center flex-1 min-w-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                  <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                     {user.public_repos}
                   </div>
                   <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
@@ -173,7 +173,7 @@ export const Hero = () => {
                   </div>
                 </div>
                 <div className="text-center flex-1 min-w-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                  <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                     {user.followers}
                   </div>
                   <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
@@ -181,7 +181,7 @@ export const Hero = () => {
                   </div>
                 </div>
                 <div className="text-center flex-1 min-w-0">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                  <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                     {user.following}
                   </div>
                   <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
@@ -216,7 +216,7 @@ export const Hero = () => {
           >
             <Motion.button
               onClick={() => scrollToSection("#about")}
-              className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               animate={{ y: [0, 10, 0] }}
               transition={{
                 duration: 2,

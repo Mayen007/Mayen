@@ -78,6 +78,7 @@ export const Activity = () => {
               blockSize={10}
               blockMargin={3}
               fontSize={12}
+              showTotalCount={true}
               style={{
                 width: "100%",
               }}

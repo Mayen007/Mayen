@@ -1,7 +1,3 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
-
 /* Tailwind Base Styles */
 @tailwind base;
 @tailwind components;
@@ -29,12 +25,22 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Headings use the brand display font everywhere by default */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
 }
 
 /* Custom Utilities */
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-700 via-primary-500 to-primary-400;
   }
 
   .glass-effect {
@@ -44,8 +50,9 @@
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
   }
-  .bg-gradient{
-    @apply bg-gradient-to-r from-primary-500 to-purple-600;
+
+  .bg-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-800;
   }
 }
 

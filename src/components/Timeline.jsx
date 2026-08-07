@@ -26,7 +26,7 @@ export const Timeline = () => {
       description:
         "Specialized training in MongoDB, Express.js, React, and Node.js. Building production-ready full-stack applications.",
       icon: FiAward,
-      color: "from-purple-500 to-pink-500",
+      color: "from-primary-700 to-primary-400",
       status: "completed",
     },
     {
@@ -103,7 +103,7 @@ export const Timeline = () => {
         <div className="max-w-4xl mx-auto px-2 sm:px-4">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-purple-500 to-pink-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-700 via-primary-500 to-primary-300 transform md:-translate-x-1/2" />
 
             {/* Timeline Items */}
             <div className="space-y-12">
@@ -131,7 +131,7 @@ export const Timeline = () => {
                       >
                         {/* Year Badge */}
                         <div
-                          className={`inline-block px-4 py-1 rounded-full text-sm font-semibold mb-3 bg-gradient-to-r ${milestone.color} text-white`}
+                          className={`inline-block px-4 py-1 rounded-full text-sm font-semibold font-display mb-3 bg-gradient-to-r ${milestone.color} text-white`}
                         >
                           {milestone.year}
                         </div>

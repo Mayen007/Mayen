@@ -34,7 +34,7 @@ export const Skills = () => {
   const skillCategories = [
     {
       title: "Frontend",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-primary-500 to-cyan-500",
       skills: [
         { name: "React", icon: SiReact, color: "#61DAFB" },
         { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
@@ -60,7 +60,7 @@ export const Skills = () => {
     },
     {
       title: "Tools & Platforms",
-      color: "from-purple-500 to-pink-500",
+      color: "from-amber-500 to-orange-500",
       skills: [
         { name: "Git", icon: SiGit, color: "#F05032" },
         { name: "GitHub", icon: SiGithub, color: "#181717" },

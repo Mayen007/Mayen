@@ -60,7 +60,7 @@ export const ProjectCard = ({ project, index }) => {
           <img
             src={imageSrc}
             alt={project.name}
-            className="w-full h-full object-fill group-hover:scale-100 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
             onError={() => {
               setImageError(true);
@@ -126,25 +126,25 @@ export const ProjectCard = ({ project, index }) => {
                   className="overflow-hidden"
                 >
                   <div className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400 border-l-2 border-primary-200 dark:border-primary-800 pl-3 leading-relaxed">
-  <p>
-    <span className="font-medium text-gray-700 dark:text-gray-300">
-      Problem —{" "}
-    </span>
-    {project.details.problem}
-  </p>
-  <p>
-    <span className="font-medium text-gray-700 dark:text-gray-300">
-      Solution —{" "}
-    </span>
-    {project.details.solution}
-  </p>
-  <p>
-    <span className="font-medium text-gray-700 dark:text-gray-300">
-      Outcome —{" "}
-    </span>
-    {project.details.outcome}
-  </p>
-</div>
+                    <p>
+                      <span className="font-medium text-gray-700 dark:text-gray-300">
+                        Problem —{" "}
+                      </span>
+                      {project.details.problem}
+                    </p>
+                    <p>
+                      <span className="font-medium text-gray-700 dark:text-gray-300">
+                        Solution —{" "}
+                      </span>
+                      {project.details.solution}
+                    </p>
+                    <p>
+                      <span className="font-medium text-gray-700 dark:text-gray-300">
+                        Outcome —{" "}
+                      </span>
+                      {project.details.outcome}
+                    </p>
+                  </div>
                 </Motion.div>
               )}
             </AnimatePresence>
@@ -201,7 +201,7 @@ export const ProjectCard = ({ project, index }) => {
               href={project.homepageUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-gradient-to-r from-primary-500 to-purple-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium text-sm"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 bg-gradient text-white rounded-lg hover:brightness-110 transition-all font-medium text-sm"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

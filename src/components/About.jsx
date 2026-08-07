@@ -28,7 +28,10 @@ export const About = () => {
     : null;
 
   return (
-    <Section id="about" className="bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
+    <Section
+      id="about"
+      className="bg-gray-50 dark:bg-gray-800/50 overflow-hidden"
+    >
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -41,8 +44,7 @@ export const About = () => {
             About Me
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Passionate about building innovative solutions and learning new
-            technologies
+            Frontend-focused developer building fast, accessible interfaces
           </p>
         </div>
 
@@ -68,9 +70,9 @@ export const About = () => {
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   I'm a Full-Stack Developer based in Nairobi, Kenya, working
                   toward a BSc in Information Technology at Mount Kenya
-                  University (2027). My focus is frontend engineering —
-                  building interfaces that are fast, accessible, and
-                  genuinely pleasant to use.
+                  University (2027). My focus is frontend engineering — building
+                  interfaces that are fast, accessible, and genuinely pleasant
+                  to use.
                 </p>
               </div>
 
@@ -79,11 +81,10 @@ export const About = () => {
                   What I Build
                 </h4>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  I work primarily in React, with a strong handle on the
-                  backend systems that power it — REST APIs, MongoDB, and
-                  Node.js. Recent work includes a community platform for
-                  MKUSSSA and a developer job-tracking system tailored for
-                  the Kenyan market.
+                  I work primarily in React, with a strong handle on the backend
+                  systems that power it — REST APIs, MongoDB, and Node.js.
+                  Recent work includes a community platform for MKUSSSA and a
+                  developer job-tracking system tailored for the Kenyan market.
                 </p>
               </div>
 
@@ -93,9 +94,9 @@ export const About = () => {
                 </h4>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   I care about the details — component architecture, UI
-                  consistency, and interfaces built around how people
-                  actually use them. Currently deepening my knowledge of
-                  performance optimization and modern design systems.
+                  consistency, and interfaces built around how people actually
+                  use them. Currently deepening my knowledge of performance
+                  optimization and modern design systems.
                 </p>
               </div>
             </div>
@@ -198,7 +199,7 @@ export const About = () => {
               key={stat.label}
               className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow text-center"
             >
-              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">
+              <div className="font-display text-2xl sm:text-3xl font-bold text-gradient mb-1">
                 {stat.value}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -219,7 +220,7 @@ export const About = () => {
           <Motion.a
             href="/Mayen Akech Resume.pdf"
             download="Mayen Akech Resume.pdf"
-            className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
+            className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >

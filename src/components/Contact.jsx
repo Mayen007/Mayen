@@ -90,8 +90,8 @@ export const Contact = () => {
             <span className="text-gradient">Get In Touch</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            I'm always interested in hearing about new projects and
-            opportunities. Let's connect!
+            Open to junior developer roles and internships. Reach out by email,
+            or find me on GitHub and LinkedIn below.
           </p>
         </Motion.div>
 

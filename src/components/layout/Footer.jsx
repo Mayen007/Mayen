@@ -34,7 +34,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-      <div className="container-custom py-12">
+      <div className="px-4 sm:px-6 py-12 max-w-7xl mx-auto">
         <div className="flex flex-col items-center space-y-6">
           {/* Social Links */}
           <div className="flex items-center space-x-6">
