@@ -151,7 +151,8 @@ export const Hero = () => {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto px-4"
           >
-            {user?.bio || "Crafting interfaces people actually enjoy using."}
+            {user?.bio ||
+              "Full-Stack Developer | MERN Stack — building web apps with React, Node.js, and Python"}
           </Motion.p>
           {/* Stats / Loading */}
           {isLoading ? (

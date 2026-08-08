@@ -42,8 +42,8 @@ export const Contact = () => {
     {
       icon: FiMail,
       label: "Email",
-      value: user?.email || "mayenakech9@gmail.com",
-      href: `mailto:${user?.email || "mayenakech9@gmail.com"}`,
+      value: user?.email || "hello@makech.me",
+      href: `mailto:${user?.email || "hello@makech.me"}`,
       color: "text-red-500",
     },
     {
@@ -52,7 +52,7 @@ export const Contact = () => {
       // don't display the number publicly — prompt users to request it via email
       value: "Available on request",
       href: `mailto:${
-        user?.email || "mayenakech9@gmail.com"
+        user?.email || "hello@makech.me"
       }?subject=Phone%20Number%20Request&body=Hi%20Mayen,%0A%0APlease%20share%20your%20phone%20number%20so%20we%20can%20connect.`,
       color: "text-green-500 dark:text-green-400",
     },

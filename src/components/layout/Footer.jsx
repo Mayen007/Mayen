@@ -27,7 +27,7 @@ export const Footer = () => {
     },
     {
       name: "Email",
-      href: "mailto:mayenakech9@gmail.com",
+      href: "mailto:hello@makech.me",
       icon: FiMail,
     },
   ];
