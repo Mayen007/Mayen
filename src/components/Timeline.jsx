@@ -14,7 +14,7 @@ export const Timeline = () => {
       title: "BSc Information Technology",
       subtitle: "Mount Kenya University (Expected)",
       description:
-        "A broader computer science foundation beyond web development: object-oriented programming in C, C#, C++, Java, and Visual Basic; systems-level coursework in operating systems, distributed systems, and network programming; and formal training in system design and security.",
+        "A broader computer science foundation beyond web development: object-oriented programming in C, C#, Java, and Visual Basic; systems-level coursework in operating systems, distributed systems, and network programming; and formal training in system design and security.",
       icon: FiBook,
       color: "from-blue-500 to-cyan-500",
       status: "current",
@@ -115,14 +115,14 @@ export const Timeline = () => {
                   <Motion.div
                     key={index}
                     variants={itemVariants}
-                    className={`relative flex flex-col md:flex-row gap-8 md:gap-12 ${
+                    className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${
                       isLeft ? "md:flex-row-reverse" : ""
                     }`}
                   >
                     {/* Content Card */}
                     <div
                       className={`flex-1 ml-16 md:ml-0 ${
-                        isLeft ? "md:text-right md:pr-12" : "md:pl-12"
+                        isLeft ? "md:pl-2" : "md:pr-2"
                       }`}
                     >
                       <Motion.div
