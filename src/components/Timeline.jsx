@@ -14,7 +14,7 @@ export const Timeline = () => {
       title: "BSc Information Technology",
       subtitle: "Mount Kenya University (Expected)",
       description:
-        "Specializing in software development, database management, and systems design.",
+        "A broader computer science foundation beyond web development: object-oriented programming in C, C#, C++, Java, and Visual Basic; systems-level coursework in operating systems, distributed systems, and network programming; and formal training in system design and security.",
       icon: FiBook,
       color: "from-blue-500 to-cyan-500",
       status: "current",
@@ -24,7 +24,7 @@ export const Timeline = () => {
       title: "Power Learn Project Africa",
       subtitle: "MERN Stack / Full-Stack Development",
       description:
-        "Specialized training in MongoDB, Express.js, React, and Node.js. Building production-ready full-stack applications.",
+        "A 16-week program: the first 8 weeks covered web fundamentals (HTML, CSS, JavaScript), Python, and database design with MySQL. The second 8 weeks specialized in the MERN stack, building REST APIs and culminating in Reviwa as the capstone project.",
       icon: FiAward,
       color: "from-primary-700 to-primary-400",
       status: "completed",

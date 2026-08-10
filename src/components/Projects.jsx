@@ -31,7 +31,7 @@ const PROJECTS = [
   },
   {
     id: "read-it-later",
-    name: "read-it-later",
+    name: "Read It Later",
     description:
       "A simple, visual way to save and organize articles you want to read. Built with the MERN stack and works in any modern browser.",
     url: "https://github.com/Mayen007/read-it-later",
@@ -70,7 +70,7 @@ const PROJECTS = [
   },
   {
     id: "reviwa",
-    name: "reviwa",
+    name: "Reviwa",
     description:
       "A community-driven platform that makes urban waste reporting smarter, more transparent, and trackable.",
     details: {
@@ -110,7 +110,7 @@ const PROJECTS = [
   },
   {
     id: "qrgen",
-    name: "qrgen",
+    name: "QrGen",
     description:
       "A professional QR code generator application designed for URLs, WiFi credentials, contact cards, and plain text.",
     url: "https://github.com/Mayen007/qrgen",
