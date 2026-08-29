@@ -103,19 +103,11 @@ export const Contact = () => {
           {contactMethods.map((method, index) => {
             const Icon = method.icon;
             return (
-              <Motion.a
+              <Motion.div
                 key={index}
-                href={method.href}
-                target={method.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  method.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
                 variants={itemVariants}
                 className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
                 whileHover={{ y: -4, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-start gap-4">
                   <div
@@ -127,13 +119,24 @@ export const Contact = () => {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                       {method.label}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 truncate">
+                    <a
+                      href={method.href}
+                      target={
+                        method.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        method.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="block truncate text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors cursor-pointer"
+                    >
                       {method.value}
-                    </p>
+                    </a>
                   </div>
                   <FiExternalLink className="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors flex-shrink-0" />
                 </div>
-              </Motion.a>
+              </Motion.div>
             );
           })}
         </Motion.div>
