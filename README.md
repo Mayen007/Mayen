@@ -176,7 +176,7 @@ Issues and feature requests are welcome — check the [issues page](https://gith
 **Mayen Akech**
 
 - GitHub: [@Mayen007](https://github.com/Mayen007)
-- LinkedIn: [Mayen Akech](https://www.linkedin.com/in/makech)
+- LinkedIn: [Mayen Akech](https://www.linkedin.com/in/itsmayen)
 - Email: hello@makech.me
 
 ---
